@@ -5,9 +5,123 @@
     <description>test</description>
     <link>http://wangyapeng.net/</link>
     <atom:link href="http://wangyapeng.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 11 Jul 2016 14:46:07 +0800</pubDate>
-    <lastBuildDate>Mon, 11 Jul 2016 14:46:07 +0800</lastBuildDate>
+    <pubDate>Mon, 11 Jul 2016 15:03:12 +0800</pubDate>
+    <lastBuildDate>Mon, 11 Jul 2016 15:03:12 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Install Proto3 On Windows10</title>
+        <description>&lt;p&gt;&lt;a name=&quot;3210&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;windowsprotobuf3&quot;&gt;Windows下protobuf3安装小记&lt;/h1&gt;
+
+&lt;div&gt;
+
+&lt;table bgcolor=&quot;#D4DDE5&quot; border=&quot;0&quot;&gt;
+
+&lt;tbody&gt;
+
+&lt;tr&gt;
+
+&lt;td&gt;**创建时间：**&lt;/td&gt;
+
+&lt;td&gt;_2016/7/8 15:49_&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td&gt;**更新时间：**&lt;/td&gt;
+
+&lt;td&gt;_2016/7/10 23:15_&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td&gt;**作者：**&lt;/td&gt;
+
+&lt;td&gt;_王亚鹏_&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+&lt;td&gt;**标签：**&lt;/td&gt;
+
+&lt;td&gt;_proto3, protobuf, windows_&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;/tbody&gt;
+
+&lt;/table&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&amp;lt;/a&amp;gt;&lt;/p&gt;
+
+&lt;div&gt;&lt;a name=&quot;3210&quot;&gt;&lt;span&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;一开始搞的是2，可惜我要用的gRPC只能用proto3.&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;  
+&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;proto2:&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;在vsprojects文件夹内打开sln即可。&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;使用visual studio 2015，需在config.h添加&lt;/span&gt;&lt;/div&gt;
+
+&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;&lt;font color=&quot;#808080&quot; size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;#define&lt;/span&gt;&lt;/font&gt; &lt;font color=&quot;#6F008A&quot; size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;&lt;font color=&quot;#808080&quot; size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;#define&lt;/span&gt;&lt;/font&gt; &lt;font color=&quot;#6F008A&quot; size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;_SCL_SECURE_NO_WARNINGS&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;  
+&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;proto3:&lt;/span&gt;&lt;/div&gt;
+
+&lt;/span&gt;&lt;/a&gt;
+
+&lt;div&gt;&lt;a name=&quot;3210&quot;&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;还没有正式支持windows下编译，下载了编译好的&lt;/span&gt;&lt;/a&gt;[protoc3.0.0-beta-3-win32.zip](https://github.com/google/protobuf/releases/download/v3.0.0-beta-3/protoc-3.0.0-beta-3-win32.zip)。&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;编译示例addressbook.proto：&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;  
+&lt;/span&gt;&lt;/div&gt;
+
+&lt;div style=&quot;box-sizing: border-box; padding: 8px; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);&quot;&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;protoc --cpp_out=. addressbook.proto&lt;/span&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;  
+&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;成功生成了addressbook.pb.h和addressbook.pb.cc两个文件，但是需要的&lt;font size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;libprotobuf.lib还是得自己编译。&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;从github下载的项目没有了vsprojects文件夹，只能自己想办法。&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;我将proto2的vsprojects文件夹下的sln/vcxproj/filters等vs需要的文件拷贝过来，成功编译出了&lt;font size=&quot;1&quot;&gt;&lt;span style=&quot;font-size:9pt&quot;&gt;libprotobuf.lib。&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;接着再回来编译示例程序，提示一堆链接错误。仔细看那些链接错误，原来是proto2的vcxproj项目配置里没有proto3新增的一些文件。&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;按照build output，一个一个地将需要的cc文件添加到libprotobuf工程中，最终成功编译了示例程序。&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style=&quot;font-family: Consolas;&quot;&gt;  
+&lt;/span&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 11 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://wangyapeng.net/2016/07/11/install-proto3-on-windows10/</link>
+        <guid isPermaLink="true">http://wangyapeng.net/2016/07/11/install-proto3-on-windows10/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Protobuf Installation</title>

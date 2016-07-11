@@ -1,0 +1,104 @@
+<a name="3210">
+
+# Windows下protobuf3安装小记
+
+<div>
+
+<table bgcolor="#D4DDE5" border="0">
+
+<tbody>
+
+<tr>
+
+<td>**创建时间：**</td>
+
+<td>_2016/7/8 15:49_</td>
+
+</tr>
+
+<tr>
+
+<td>**更新时间：**</td>
+
+<td>_2016/7/10 23:15_</td>
+
+</tr>
+
+<tr>
+
+<td>**作者：**</td>
+
+<td>_王亚鹏_</td>
+
+</tr>
+
+<tr>
+
+<td>**标签：**</td>
+
+<td>_proto3, protobuf, windows_</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</a>
+
+<div><a name="3210"><span>
+
+<div><span style="font-family: Consolas;">一开始搞的是2，可惜我要用的gRPC只能用proto3.</span></div>
+
+<div><span style="font-family: Consolas;">  
+</span></div>
+
+<div><span style="font-family: Consolas;">proto2:</span></div>
+
+<div><span style="font-family: Consolas;">在vsprojects文件夹内打开sln即可。</span></div>
+
+<div><span style="font-family: Consolas;">使用visual studio 2015，需在config.h添加</span></div>
+
+<div align="left"><span style="font-family: Consolas;"><font color="#808080" size="1"><span style="font-size:9pt">#define</span></font> <font color="#6F008A" size="1"><span style="font-size:9pt">_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS</span></font></span></div>
+
+<div align="left"><span style="font-family: Consolas;"><font color="#808080" size="1"><span style="font-size:9pt">#define</span></font> <font color="#6F008A" size="1"><span style="font-size:9pt">_SCL_SECURE_NO_WARNINGS</span></font></span></div>
+
+<div><span style="font-family: Consolas;">  
+</span></div>
+
+<div><span style="font-family: Consolas;">proto3:</span></div>
+
+</span></a>
+
+<div><a name="3210"><span style="font-family: Consolas;">还没有正式支持windows下编译，下载了编译好的</span></a>[protoc3.0.0-beta-3-win32.zip](https://github.com/google/protobuf/releases/download/v3.0.0-beta-3/protoc-3.0.0-beta-3-win32.zip)。</div>
+
+<div><span style="font-family: Consolas;">编译示例addressbook.proto：</span></div>
+
+<div><span style="font-family: Consolas;">  
+</span></div>
+
+<div style="box-sizing: border-box; padding: 8px; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.148438);">
+
+<div><span style="font-family: Consolas;">protoc --cpp_out=. addressbook.proto</span></div>
+
+</div>
+
+<div><span style="font-family: Consolas;">  
+</span></div>
+
+<div><span style="font-family: Consolas;">成功生成了addressbook.pb.h和addressbook.pb.cc两个文件，但是需要的<font size="1"><span style="font-size:9pt">libprotobuf.lib还是得自己编译。</span></font></span></div>
+
+<div><span style="font-family: Consolas;">从github下载的项目没有了vsprojects文件夹，只能自己想办法。</span></div>
+
+<div><span style="font-family: Consolas;">我将proto2的vsprojects文件夹下的sln/vcxproj/filters等vs需要的文件拷贝过来，成功编译出了<font size="1"><span style="font-size:9pt">libprotobuf.lib。</span></font></span></div>
+
+<div><span style="font-family: Consolas;">接着再回来编译示例程序，提示一堆链接错误。仔细看那些链接错误，原来是proto2的vcxproj项目配置里没有proto3新增的一些文件。</span></div>
+
+<div><span style="font-family: Consolas;">按照build output，一个一个地将需要的cc文件添加到libprotobuf工程中，最终成功编译了示例程序。</span></div>
+
+<div><span style="font-family: Consolas;">  
+</span></div>
+
+</div>
