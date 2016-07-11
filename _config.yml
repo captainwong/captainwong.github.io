@@ -5,7 +5,7 @@
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
-
+======
 # Site settings
 title: Jack's Blog
 email: 1281261856@qq.com
@@ -18,7 +18,7 @@ github_username:  captainwong
 
 # Build settings
 markdown: kramdown
-=======
+
 # Site settings
 #title: Your Blog
 SEOTitle:  隔壁老王 |  Jack's Blog
