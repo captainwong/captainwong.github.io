@@ -2,20 +2,18 @@
 layout: post
 title:  "Windows下protobuf3安装小记"
 subtitle: "在坑里打滚的经历。。。"
-date:   "2016-07-08" 
+date:   "2016-07-11" 
 author: "cj"
 tags:
-    -proto3
-    -protobuf
-    -windows
+    proto3
+    protobuf
+    windows
 ---
 
+一开始搞的是2，可惜我要用的gRPC只能用proto3.
 
-
-
-
-
-一开始搞的是2，可惜我要用的gRPC只能用proto3.在vsprojects文件夹内打开sln即可。
+proto2:
+在vsprojects文件夹内打开sln即可。
 使用visual studio 2015，需在config.h添加
 
 '''c++
@@ -23,7 +21,8 @@ tags:
 #define _SCL_SECURE_NO_WARNINGS
 '''
 
-protoc还没有正式支持windows下编译，下载了编译好的[protoc3.0.0-beta-3-win32.zip](https://github.com/google/protobuf/releases/download/v3.0.0-beta-3/protoc-3.0.0-beta-3-win32.zip)。
+proto3:
+proto3还没有正式支持windows下编译，下载了编译好的[protoc3.0.0-beta-3-win32.zip](https://github.com/google/protobuf/releases/download/v3.0.0-beta-3/protoc-3.0.0-beta-3-win32.zip)。
 编译示例addressbook.proto：
 
 '''
