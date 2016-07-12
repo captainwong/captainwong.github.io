@@ -29,7 +29,7 @@ protoc --grpc_out=. --plugin=protoc-gen-grpc="your-grpc-cpp-plugin-exe-path" hel
 生成 helloworld.grpc.pb.h 和 helloworld.grpc.pb.cc 两个文件。
 
 将上述4个文件添加到新建的示例工程中，在工程属性的 c/c++ Additional Include Directories 中添加 protobuf3库中的 src 文件夹路径和 grpc 库中 include 文件夹路径。在 Additional Library Directories 中添加 protobuf 和 grpc 中 vsprojects 的输出路径，或 debug 或 release 。在 Linker->Input 的 Additional Dependencies 中添加如下 lib 库：
-{% highlight %}
+{% highlight PowerShell %}
 libprotobuf.lib
 z.lib
 gpr.lib
