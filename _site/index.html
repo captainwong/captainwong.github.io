@@ -158,74 +158,6 @@
             ">
     			
 <div class="post-preview">
-    <a href="/2016/07/11/install-proto3-on-windows10/">
-        <h2 class="post-title">
-            Install Proto3 On Windows10
-        </h2>
-        
-        <div class="post-content-preview">
-            
-
-Windows下protobuf3安装小记
-
-
-
-
-
-
-
-
-
-**创建时间：**
-
-_2016/7/8 15:49_
-
-
-
-
-
-**更新时间：**
-
-_2016/7/10 23:15_
-
-
-
-
-
-**作者：**
-
-_王亚鹏_
-
-
-
-
-
-**标签：**
-
-_proto3, protobuf, windows_
-
-
-
-
-
-
-
-
-
-&lt;/a&gt;
-
-
-
-一开始搞的是2，可惜我要用的gRP...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Your Blog on July 11, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
     <a href="/2016/07/09/protobuf-installation/">
         <h2 class="post-title">
             Protobuf Installation
@@ -255,6 +187,34 @@ _proto3, protobuf, windows_
     </a>
     <p class="post-meta">
         Posted by Your Blog on July 8, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/07/08/install-proto3-on-windows10/">
+        <h2 class="post-title">
+            Windows下protobuf3安装小记
+        </h2>
+        
+        <h3 class="post-subtitle">
+            在坑里打滚的经历。。。
+        </h3>
+        
+        <div class="post-content-preview">
+            一开始搞的是2，可惜我要用的gRPC只能用proto3.在vsprojects文件夹内打开sln即可。
+使用visual studio 2015，需在config.h添加
+
+’'’c++
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+#define _SCL_SECURE_NO_WARNINGS
+‘’’
+
+protoc还没有正式支持win...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by cj on July 8, 2016
     </p>
 </div>
 <hr>
@@ -358,6 +318,12 @@ _proto3, protobuf, windows_
                                 <a href="/tags/#JavaScript" title="JavaScript" rel="3">
                                     JavaScript
                                 </a>
+                            
+                        
+                            
+                        
+                            
+                        
                             
                         
                             
