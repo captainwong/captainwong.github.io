@@ -21,16 +21,13 @@ protoc --grpc_out=. --plugin=protoc-gen-grpc="path/to/cpp-plugin.exe" hellostrea
 
 # 2 建立 grpc_streaming_greeter_client 工程#
 添加第1步生成的4个文件、设置工程属性、添加引用库路径、包含库等设置步骤已在[Windows 下 gRPC 安装小记](http://wangyapeng.net/2016/07/12/install-gRPC-on-windows/)一文写出，不再赘述。
-以下是 main.cpp 内容：
+以下是 main.cpp 内容。
+
 {% highlight c++ %}
 #include <iostream>
-
 #include <memory>
-
 #include <string>
-
 #include <grpc++/grpc++.h>
-
 #include "hellostreamingworld.grpc.pb.h"
 
 using grpc::Channel;
@@ -96,16 +93,12 @@ int main(int argc, char** argv) {
 {% endhighlight %}
 
 # 3 建立 grpc_streaming_greeter_server 工程，项目设置同上。
-main.cpp:
+
 {% highlight c++ %}
 #include <iostream>
-
 #include <memory>
-
 #include <string>
-
 #include <grpc++/grpc++.h>
-
 #include "hellostreamingworld.grpc.pb.h"
 
 class GreeterServiceImpl final : public hellostreamingworld::MultiGreeter::Service
