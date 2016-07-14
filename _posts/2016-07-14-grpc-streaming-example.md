@@ -24,6 +24,7 @@ protoc --grpc_out=. --plugin=protoc-gen-grpc="path/to/cpp-plugin.exe" hellostrea
 以下是 main.cpp 内容。
 
 {% highlight c++ %}
+
 class GreeterClient {
 public:
 	GreeterClient(std::shared_ptr<Channel> channel)
@@ -77,11 +78,13 @@ int main(int argc, char** argv) {
 	std::system("pause");
 	return 0;
 }
+
 {% endhighlight %}
 
 # 3 建立 grpc_streaming_greeter_server 工程，项目设置同上。
 
 {% highlight c++ %}
+
 class GreeterServiceImpl final : public hellostreamingworld::MultiGreeter::Service
 {
 	virtual ::grpc::Status sayHello(::grpc::ServerContext* context, 
@@ -115,6 +118,7 @@ int main()
 
     return 0;
 }
+
 {% endhighlight %}
 
 # 4 测试 #
