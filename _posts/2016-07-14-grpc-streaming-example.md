@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "hellostreamingworld 示例实现"
-subtitle: "test"
+subtitle: "github 的 markdown 好麻烦。。。"
 date:   "2016-07-15" 
 author: "cj"
 tags:
