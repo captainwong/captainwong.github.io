@@ -24,10 +24,10 @@ tags:
 
 这是什么感觉？非一般的感觉啊！赶紧上手试试。
 
-1. 按照[微软官方文档](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)说明，先在Linux上执行
+1. 按照[微软官方文档](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)说明，先在Linux上安装几个必须的库。
 {% highlight shell %}
 sudo apt-get install openssh-server g++ gdb gdbserver
-{% endhighlight %} 安装几个必须的库。
+{% endhighlight %} 
 
 2. 下载[Visual C++ for Linux Development extension](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)
 安装前提：Visual Studio版本为Update3。下载后按照提示安装之。
@@ -45,6 +45,9 @@ sudo apt-get install openssh-server g++ gdb gdbserver
 6. 总结：微软大法好，Coders Use VS 保平安！哈哈，还差一步，插件没有自动引用Linux的头文件，需要手动从Linux主机的/usr/include拷贝到本机并添加到vs的c++ path中。Enjoy it！
 
 参考资料：
+
 [微软有必要开发 Visual Studio for Linux 吗，如有必要，那么会产生什么影响？](https://www.zhihu.com/question/48553142)
+
 [微软官方文档](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)
+
 [Visual C++ for Linux Development extension](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)
