@@ -13,9 +13,6 @@ tags:
 1. 生成cc 文件
 {% highlight Shell %}
 protoc --cpp_out=. hellostreamingworld.proto 
-{% endhighlight %}
-
-{% highlight Shell %}
 protoc --grpc_out=. --plugin=protoc-gen-grpc="path/to/cpp-plugin.exe" hellostreamingworld.proto
 {% endhighlight %}
 
