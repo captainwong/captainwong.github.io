@@ -17,17 +17,18 @@ tags:
 前两天逛知乎发现一个问题：[微软有必要开发 Visual Studio for Linux 吗，如有必要，那么会产生什么影响？](https://www.zhihu.com/question/48553142)，[孙明琦](https://www.zhihu.com/people/sun-ming-qi-34)说：
 
 > 只要你的linux装了ssh-server，gdb-server，g++，然后把usr/include下的文件拷贝到windows下，那么就可以在windows下的vs上编写linux程序，vs替你ssh到linux上用g++编译，用gdb-server debug，gdb各项功能完美映射到vs的debug窗口上，无比舒爽
+
 > 作者：孙明琦
+
 > 链接：[https://www.zhihu.com/question/48553142/answer/120663820](https://www.zhihu.com/question/48553142/answer/120663820)
+
 > 来源：知乎
+
 > 著作权归作者所有，转载请联系作者获得授权。
 
 这是什么感觉？非一般的感觉啊！赶紧上手试试。
 
-1. 按照[微软官方文档](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)说明，先在Linux上安装几个必须的库。
-{% highlight shell %}
-sudo apt-get install openssh-server g++ gdb gdbserver
-{% endhighlight %} 
+1. 按照[微软官方文档](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)说明，先在Linux上安装几个必须的库。{% highlight shell %}sudo apt-get install openssh-server g++ gdb gdbserver{% endhighlight %} 
 
 2. 下载[Visual C++ for Linux Development extension](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/)
 安装前提：Visual Studio版本为Update3。下载后按照提示安装之。
