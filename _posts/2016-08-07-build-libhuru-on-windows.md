@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "WindowsÏÂlibhuru±àÒëĞ¡¼Ç"
-subtitle: "PDFÉñÆ÷"
+title:  "Windowsä¸‹libhuruç¼–è¯‘å°è®°"
+subtitle: "PDFç¥å™¨"
 date:   "2016-08-07" 
 author: "cj"
 tags:
@@ -11,10 +11,10 @@ tags:
     windows
 ---
 
-c++²Ù×÷pdf£¬ËÑÁËºÜ¶à×ÊÁÏ£¬ÓĞºÜ¶à¿â¿ÉÒÔÓÃ£¬µ«×îÖÕ¾ö¶¨Ê¹ÓÃlibhuru¡£
+c++æ“ä½œpdfï¼Œæœäº†å¾ˆå¤šèµ„æ–™ï¼Œæœ‰å¾ˆå¤šåº“å¯ä»¥ç”¨ï¼Œä½†æœ€ç»ˆå†³å®šä½¿ç”¨libhuruã€‚
 
-libhuruÒÀÀµlibpng£¬Ê×ÏÈ±àÒëÖ®£¬Éú³ÉËùĞèlibpng16.libÎÄ¼ş¡£
+libhuruä¾èµ–libpngï¼Œé¦–å…ˆç¼–è¯‘ä¹‹ï¼Œç”Ÿæˆæ‰€éœ€libpng16.libæ–‡ä»¶ã€‚
 
-ÔÚlibhuruµÄ¹¤³ÌÊôĞÔÖĞÌí¼ÓlibpngµÄ¿âÄ¿Â¼ÓëlibÄ¿Â¼£¬±àÒë¼´¿É¡£
+åœ¨libhuruçš„å·¥ç¨‹å±æ€§ä¸­æ·»åŠ libpngçš„åº“ç›®å½•ä¸libç›®å½•ï¼Œç¼–è¯‘å³å¯ã€‚
 
-libhuruÊ¹ÓÃÊ¾Àı¿É²Î¿¼[´úÂë](https://github.com/captainwong/Player/blob/master/Player/printermgr.cpp)
+libhuruä½¿ç”¨ç¤ºä¾‹å¯å‚è€ƒ[ä»£ç ](https://github.com/captainwong/Player/blob/master/Player/printermgr.cpp)
