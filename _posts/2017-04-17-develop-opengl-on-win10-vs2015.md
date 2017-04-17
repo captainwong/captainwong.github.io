@@ -29,12 +29,12 @@ Windows下环境搭建，有点扯淡，不过还好我身经百战，这种事�
 目录结构类似
 
 opengl
-----inlude
-    ----GL
-----lib
-    ----x86
-        ----Debug
-        ----Release
+    inlude
+        GL
+    lib
+        x86
+            Debug
+            Release
         
 2.下载[glut](http://freeglut.sourceforge.net/index.php#download)
 版本不要选3.0.0，那个没有vs的sln文件，下载2.8.1版本的。
