@@ -43,6 +43,8 @@ Windows下环境搭建，有点扯淡，不过还好我身经百战，这种事�
 
 5.运行效果
 ![img](http://115.231.175.17/img/solar_system.png)
+动态图：
+![img](http://115.231.175.17/img/solar_system.gif)
 
 后来呢，发现在Ubuntu下不能运行的原因是这一句：
 
