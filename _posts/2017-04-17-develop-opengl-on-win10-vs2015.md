@@ -16,12 +16,15 @@ tags:
 搜索了不少资料，发现opengl这玩意有点过时，而且不像其他开源库那样有源码，只能通过一些第三方的库实现。
 
 首先记录一下ubuntu下开发环境搭建过程，so easy:
+
 {% highlight Shell %}
 sudo apt-get install freeglut3 freeglut3-dev
 {% endhighlight %}
+
 项目代码参见[github/captainwong/shiyanlou_cpp/solarsystem](https://github.com/captainwong/shiyanlou_cpp/tree/master/solarsystem)
 
 Windows下环境搭建，有点扯淡，不过还好我身经百战，这种事见的多了。。。
+
 1.新建一个文件夹存放所有所需的头文件和dll/lib文件
 目录结构类似
 
@@ -47,12 +50,16 @@ opengl
 ![img](http://115.231.175.17/img/solar_system.png)
 
 后来呢，发现在Ubuntu下不能运行的原因是这一句：
-{% highlight Shell %}
+
+{% highlight c++ %}
 glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 {% endhighlight %}
+
 我写成了
-{% highlight Shell %}
+
+{% highlight c++ %}
 glutInitDisplayMode(GL_RGBA | GL_DOUBLE);
 {% endhighlight %}
+
 这破问题断断续续折腾了好几个小时。。。。。。。。。。。。。。
 
