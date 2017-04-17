@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "win10+vs2015ÏÂOpenGL¿ª·¢»·¾³´î½¨"
-subtitle: "²Ùµ°"
+title:  "win10+vs2015ä¸‹OpenGLå¼€å‘ç¯å¢ƒæ­å»º"
+subtitle: "æ“è›‹"
 date:   "2017-04-17" 
 author: "cj"
 tags:
@@ -12,18 +12,18 @@ tags:
     linux
 ---
 
-Ö®Ç°ÔÚÊµÑéÂ¥Ñ§ÁËÒ»¸ö[C++ÊµÏÖÌ«ÑôÏµĞĞĞÇÏµÍ³](https://www.shiyanlou.com/courses/558)µÄ¿Î³Ì£¬ÔÚËûµÄwebĞéÄâ»úÖĞËÀ»îÔËĞĞÊ§°Ü£¬ËùÒÔÊÔ×ÅÔÚÊìÏ¤µÄ»·¾³ÏÂ±àÒëÒ»´Î¡£
-ËÑË÷ÁË²»ÉÙ×ÊÁÏ£¬·¢ÏÖopenglÕâÍæÒâÓĞµã¹ıÊ±£¬¶øÇÒ²»ÏñÆäËû¿ªÔ´¿âÄÇÑùÓĞÔ´Âë£¬Ö»ÄÜÍ¨¹ıÒ»Ğ©µÚÈı·½µÄ¿âÊµÏÖ¡£
+ä¹‹å‰åœ¨å®éªŒæ¥¼å­¦äº†ä¸€ä¸ª[C++å®ç°å¤ªé˜³ç³»è¡Œæ˜Ÿç³»ç»Ÿ](https://www.shiyanlou.com/courses/558)çš„è¯¾ç¨‹ï¼Œåœ¨ä»–çš„webè™šæ‹Ÿæœºä¸­æ­»æ´»è¿è¡Œå¤±è´¥ï¼Œæ‰€ä»¥è¯•ç€åœ¨ç†Ÿæ‚‰çš„ç¯å¢ƒä¸‹ç¼–è¯‘ä¸€æ¬¡ã€‚
+æœç´¢äº†ä¸å°‘èµ„æ–™ï¼Œå‘ç°openglè¿™ç©æ„æœ‰ç‚¹è¿‡æ—¶ï¼Œè€Œä¸”ä¸åƒå…¶ä»–å¼€æºåº“é‚£æ ·æœ‰æºç ï¼Œåªèƒ½é€šè¿‡ä¸€äº›ç¬¬ä¸‰æ–¹çš„åº“å®ç°ã€‚
 
-Ê×ÏÈ¼ÇÂ¼Ò»ÏÂubuntuÏÂ¿ª·¢»·¾³´î½¨¹ı³Ì£¬so easy:
+é¦–å…ˆè®°å½•ä¸€ä¸‹ubuntuä¸‹å¼€å‘ç¯å¢ƒæ­å»ºè¿‡ç¨‹ï¼Œso easy:
 {% highlight Shell %}
 sudo apt-get install freeglut3 freeglut3-dev
 {% endhighlight %}
-ÏîÄ¿´úÂë²Î¼û[github/captainwong/shiyanlou_cpp/solarsystem](https://github.com/captainwong/shiyanlou_cpp/tree/master/solarsystem)
+é¡¹ç›®ä»£ç å‚è§[github/captainwong/shiyanlou_cpp/solarsystem](https://github.com/captainwong/shiyanlou_cpp/tree/master/solarsystem)
 
-WindowsÏÂ»·¾³´î½¨£¬ÓĞµã³¶µ­£¬²»¹ı»¹ºÃÎÒÉí¾­°ÙÕ½£¬ÕâÖÖÊÂ¼ûµÄ¶àÁË¡£¡£¡£
-1.ĞÂ½¨Ò»¸öÎÄ¼ş¼Ğ´æ·ÅËùÓĞËùĞèµÄÍ·ÎÄ¼şºÍdll/libÎÄ¼ş
-Ä¿Â¼½á¹¹ÀàËÆ
+Windowsä¸‹ç¯å¢ƒæ­å»ºï¼Œæœ‰ç‚¹æ‰¯æ·¡ï¼Œä¸è¿‡è¿˜å¥½æˆ‘èº«ç»ç™¾æˆ˜ï¼Œè¿™ç§äº‹è§çš„å¤šäº†ã€‚ã€‚ã€‚
+1.æ–°å»ºä¸€ä¸ªæ–‡ä»¶å¤¹å­˜æ”¾æ‰€æœ‰æ‰€éœ€çš„å¤´æ–‡ä»¶å’Œdll/libæ–‡ä»¶
+ç›®å½•ç»“æ„ç±»ä¼¼
 
 opengl
 ----inlude
@@ -33,26 +33,26 @@ opengl
         ----Debug
         ----Release
         
-2.ÏÂÔØ[glut](http://freeglut.sourceforge.net/index.php#download)
-°æ±¾²»ÒªÑ¡3.0.0£¬ÄÇ¸öÃ»ÓĞvsµÄslnÎÄ¼ş£¬ÏÂÔØ2.8.1°æ±¾µÄ¡£
-ÔÚVisualStudio/2012ÎÄ¼ş¼ĞÄÚ´ò¿ªsln£¬°´ÕÕÌáÊ¾Ç¨ÒÆ¹¤³Ìµ½vs2015°æ±¾£¬±àÒë£¬½«includeÄÚËùÓĞÍ·ÎÄ¼ş¿½±´µ½ÉÏÊöGLÄ¿Â¼ÄÚ£¬½«Éú³ÉµÄdll/libÎÄ¼ş¿½±´µ½¶ÔÓ¦µÄDebug»òReleaseÄ¿Â¼ÄÚ
+2.ä¸‹è½½[glut](http://freeglut.sourceforge.net/index.php#download)
+ç‰ˆæœ¬ä¸è¦é€‰3.0.0ï¼Œé‚£ä¸ªæ²¡æœ‰vsçš„slnæ–‡ä»¶ï¼Œä¸‹è½½2.8.1ç‰ˆæœ¬çš„ã€‚
+åœ¨VisualStudio/2012æ–‡ä»¶å¤¹å†…æ‰“å¼€slnï¼ŒæŒ‰ç…§æç¤ºè¿ç§»å·¥ç¨‹åˆ°vs2015ç‰ˆæœ¬ï¼Œç¼–è¯‘ï¼Œå°†includeå†…æ‰€æœ‰å¤´æ–‡ä»¶æ‹·è´åˆ°ä¸Šè¿°GLç›®å½•å†…ï¼Œå°†ç”Ÿæˆçš„dll/libæ–‡ä»¶æ‹·è´åˆ°å¯¹åº”çš„Debugæˆ–Releaseç›®å½•å†…
 
-3.ÏÂÔØ[glew](http://glew.sourceforge.net/)
-´ò¿ªbuild/vc12/glew.sln£¬Éı¼¶¹¤³Ì£¬±àÒë£¬²¢¿½±´Í·ÎÄ¼şÓëdll/libÎÄ¼ş£¬Í¬ÉÏ¡£
+3.ä¸‹è½½[glew](http://glew.sourceforge.net/)
+æ‰“å¼€build/vc12/glew.slnï¼Œå‡çº§å·¥ç¨‹ï¼Œç¼–è¯‘ï¼Œå¹¶æ‹·è´å¤´æ–‡ä»¶ä¸dll/libæ–‡ä»¶ï¼ŒåŒä¸Šã€‚
 
-4.µ±È»ÕâÖÖÊÂ¸ÉÒ»´Î¾Í¹»ÁË
-¿ÉÒÔµ½[github/captainwong/opengl_win10_vs2015](https://github.com/captainwong/opengl_win10_vs2015)ÏÂÔØopengl.7zÎÄ¼ş£¬ÒÑ¾­°üº¬ÁËincludeºÍlib
+4.å½“ç„¶è¿™ç§äº‹å¹²ä¸€æ¬¡å°±å¤Ÿäº†
+å¯ä»¥åˆ°[github/captainwong/opengl_win10_vs2015](https://github.com/captainwong/opengl_win10_vs2015)ä¸‹è½½opengl.7zæ–‡ä»¶ï¼Œå·²ç»åŒ…å«äº†includeå’Œlib
 
-5.ÔËĞĞĞ§¹û
+5.è¿è¡Œæ•ˆæœ
 ![img](http://115.231.175.17/img/solar_system.png)
 
-ºóÀ´ÄØ£¬·¢ÏÖÔÚUbuntuÏÂ²»ÄÜÔËĞĞµÄÔ­ÒòÊÇÕâÒ»¾ä£º
+åæ¥å‘¢ï¼Œå‘ç°åœ¨Ubuntuä¸‹ä¸èƒ½è¿è¡Œçš„åŸå› æ˜¯è¿™ä¸€å¥ï¼š
 {% highlight Shell %}
 glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 {% endhighlight %}
-ÎÒĞ´³ÉÁË
+æˆ‘å†™æˆäº†
 {% highlight Shell %}
 glutInitDisplayMode(GL_RGBA | GL_DOUBLE);
 {% endhighlight %}
-ÕâÆÆÎÊÌâ¶Ï¶ÏĞøĞøÕÛÌÚÁËºÃ¼¸¸öĞ¡Ê±¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£
+è¿™ç ´é—®é¢˜æ–­æ–­ç»­ç»­æŠ˜è…¾äº†å¥½å‡ ä¸ªå°æ—¶ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚
 
