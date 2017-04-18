@@ -1,4 +1,15 @@
-# 随机数浅谈
+---
+layout: post
+title:  "随机数浅谈"
+subtitle: "随机数的正确打开方式"
+date:   "2017-04-18" 
+author: "cj"
+tags:
+    random
+    c++
+    c++11
+---
+
 
 ## 坏例子：不要使用rand()
 注：截图来自[rand() Considered Harmful](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful)，[youtube](https://www.youtube.com/watch?v=LDPMpc-ENqY)上也有，演讲者为Stephan T. Lavavej。
