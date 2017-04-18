@@ -89,9 +89,11 @@ C++11版标准库中数值组件（numeric component）中随机数及其分布�
 {% highlight c++ %}
 
 // create default engine as source of randomness
+
 std::default_random_engine dre;
 
 // use engine to generate integral numbers between 10 and 20 (both included)
+
 std::uniform_int_distribution<int> di(10, 20);
 for (int i = 0; i < 20; i++) {
     std::cout << di(dre) << " ";
@@ -99,6 +101,7 @@ for (int i = 0; i < 20; i++) {
 std::cout << std::endl;
 
 // use engine to generate floating-point numbers between 10.0 and 20.0 (10.0 included, 20.0 not included)
+
 std::uniform_real_distribution<double> dr(10, 20);
 for (int i = 0; i < 8; i++) {
     std::cout << dr(dre) << " ";
