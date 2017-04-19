@@ -62,7 +62,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 ba_track_id: 184cdffdb4e89ca471f0e87a642b4f5c
 # Google Analytics
 ga_track_id: 'UA-77968635-2'            # Format: UA-xxxxxx-xx
-ga_domain: wangyapeng.net
+ga_domain: wangyapeng.me
 
 
 
