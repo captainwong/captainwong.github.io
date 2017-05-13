@@ -12,7 +12,7 @@ tags:
     postfix
 ---
 
-## 一、MediaWiki简介
+## MediaWiki简介
 
 >MediaWiki是一款基于服务器的自由软件，并获得了 GNU 通用公共许可证 (GPL)的许可。这款软件的设计之目的是使其运行于一个每天拥有百万次点击量网站的大型服务器群组上。
 >
@@ -25,7 +25,7 @@ tags:
 没说的，一看是WikiPedia的后台程序，就它了！
 
 
-## 二、安装MediaWiki
+## 安装MediaWiki
 
 1. 搭建环境
 
@@ -205,7 +205,7 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 );
 ```
 
-## 三、搭建邮件服务器
+## 搭建邮件服务器
 
 由于安全原因，需要配置MediaWiki安全策略使得注册用户才可编辑，而用户注册需要验证邮箱，因此需要安装postfix。
 
@@ -361,7 +361,7 @@ mail
 file +sent
 ```
 
-## 四、完工
+## 完工
 
 打开https://your-domain.com/wiki ，注册一个账户，创建一个页面，尽情享受“海纳百川，有容乃大”吧！
 
