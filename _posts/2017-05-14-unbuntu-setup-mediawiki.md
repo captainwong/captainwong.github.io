@@ -2,7 +2,7 @@
 layout: post
 title:  "Ubuntu下部署MediaWiKi小记"
 subtitle: "海纳百川，有容乃大"
-date:   "2017-05-13" 
+date:   "2017-05-14" 
 author: "cj"
 tags:
     ubuntu
