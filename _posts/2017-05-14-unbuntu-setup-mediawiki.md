@@ -27,7 +27,7 @@ tags:
 
 ## 安装MediaWiki
 
-1. 搭建环境
+### 1.搭建环境
 
 腾讯云的虚拟主机，Ubuntu 16.04.2 TLS
 apache2/mysql环境搭建就不提了，基本功。
@@ -51,7 +51,7 @@ sudo phpenmod mbstring
 sudo phpenmod xml
 ```
 
-2. 下载安装
+### 2. 下载安装
 
 访问[Download](https://www.mediawiki.org/wiki/Download)页面，下载最新版到/home/user/Downloads
 
@@ -62,7 +62,7 @@ sudo mkdir /var/lib/mediawiki
 sudo mv mediawiki-1.28.2/* /var/lib/mediawiki
 ```
 
-3. 创建软链接并设置合适的权限
+### 3. 创建软链接并设置合适的权限
 
 ```
 ln -s /var/lib/mediawiki /var/www/html/wiki
@@ -70,7 +70,7 @@ chown -R www-data:www-data /var/www/html/wiki
 ```
 
 
-4. 创建数据库
+### 4. 创建数据库
 
 ```
 mysql -u root -p
@@ -82,7 +82,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> quit
 ```
 
-5. 在Apache中添加新虚拟主机的配置并重启Apache
+### 5. 在Apache中添加新虚拟主机的配置并重启Apache
 
 ```
 touch /etc/apache2/sites-available/mediawiki.conf
@@ -113,7 +113,7 @@ CustomLog /var/log/apache2/your-domain.com-access_log common
 
 `sudo systemctl restart apache2`
 
-6. 配置MediaWiki
+### 6. 配置MediaWiki
 
 访问https://your-domain.com/wiki
 根据提示进行配置，Store Engine 选择 InnoDB， Database charactor set 选择 UTF-8，其他随意。
@@ -132,7 +132,7 @@ $wgMiserMode = true;
 
 现在可以访问https://your-domain.com/wiki 进行编辑了
 
-7. 安装VisualEditor插件
+### 7. 安装VisualEditor插件
 
 访问[网址](https://www.mediawiki.org/wiki/Special:ExtensionDistributor?extdistname=VisualEditor&extdistversion=REL1_28)找到最新版VisualEditor下载地址。
 
@@ -151,7 +151,7 @@ $wgHiddenPrefs[] = 'visualeditor-enable';
 
 此时VisualEditor插件已经生效了，但只能新建词条并编辑，不能保存，不能编辑已有的词条。
 
-8. 安装parsoid
+### 8. 安装parsoid
 parsoid依赖npm，首先安装npm
 
 ```
@@ -211,7 +211,7 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 
 以下皆以admin@your-domain.com为例说明。
 
-1. 创建admin用户
+### 1. 创建admin用户
 
 ```
 sudo useradd -G root admin
@@ -219,7 +219,7 @@ passwd admin
 su - admin
 ```
 
-2. 安装
+### 2. 安装
 
 ```
 sudo DEBIAN_PRIORITY=low apt-get install postfix
@@ -243,7 +243,7 @@ sudo DEBIAN_PRIORITY=low apt-get install postfix
 sudo dpkg-reconfigure postfix
 ```
 
-3. 配置
+### 3. 配置
 
 使用Maildir格式，基于用户操作会自动将邮件归档到不同的文件夹（cur, new, sent, tmp）内。另一种可用的格式是mbox，会将所有邮件保存为一个文件。
 
@@ -252,7 +252,7 @@ sudo postconf -e 'home_mailbox= Maildir/'
 sudo postconf -e 'virtual_alias_maps= hash:/etc/postfix/virtual'
 ```
 
-4. 映射邮件地址到Linux账户
+### 4. 映射邮件地址到Linux账户
 
 ```
 sudo vi /etc/postfix/virtual
@@ -272,7 +272,7 @@ sudo postmap /etc/postfix/virtual
 suto systemctl restart postfix
 ```
 
-5. 添加防火墙例外
+### 5. 添加防火墙例外
 
 ```
 sudo ufw allow Postfix
@@ -286,14 +286,14 @@ sudo ufw allow Postfix
 * IMAP - port 143
 * IMAP SSL (IMAPS) - port 993
 
-6. 设置环境变量
+### 6. 设置环境变量
 
 ```
 echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
 sudo source /etc/profile.d/mail.sh
 ```
 
-7. 安装配置邮件客户端s-nail
+### 7. 安装配置邮件客户端s-nail
 
 ```
 sudo apt-get install s-nail
@@ -308,9 +308,9 @@ set folder=Maildir
 set record=+sent
 ```
 
-8. 测试
+### 8. 测试
 
-   1. 给本机账户发一封邮件
+#### (1) 给本机账户发一封邮件
     
 ```
 echo 'hello world' | mail -s 'this is a subject' -Snorecord admin
@@ -342,8 +342,8 @@ cur  new  tmp
 /home/sammy/Maildir/tmp:
 ```
 
-   2. 给外部用户如user@email.com发送一封邮件
-   
+#### (2) 给外部用户如user@email.com发送一封邮件
+
 ```
 echo 'Accorss the Greate Wall we can reach every corner in the world!' | mail -s 'Hello Wolrd!' -r admin 'user@email.com'
 ```
