@@ -209,7 +209,7 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 
 *2017年5月16日增补*
 
-编辑/var/www/html/wiki/LocalSettings，
+编辑/var/www/html/wiki/LocalSettings.php，
 
 ```
 $wgGroupPermissions['*']['createaccount'] = false;
