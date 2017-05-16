@@ -397,6 +397,8 @@ Enjoy it!
 * [How to install MediaWiki on an Ubuntu 16.04 VPS](https://www.rosehosting.com/blog/how-to-install-mediawiki-on-an-ubuntu-16-04-vps/)
 * [Parsoid](https://www.mediawiki.org/wiki/Parsoid)
 * [Parsoid/Setup](https://www.mediawiki.org/wiki/Parsoid/Setup)
+* [Manual:Preventing access](https://www.mediawiki.org/wiki/Manual:Preventing_access#Restrict_viewing_of_all_pages)
+* [Extension:VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid_in_private_wikis)
 * [How To Install and Configure Postfix on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-on-ubuntu-16-04)
 * [How To Install Node.js on an Ubuntu 14.04 server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
 * [How To Install and Configure Postfix on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-on-ubuntu-16-04)
