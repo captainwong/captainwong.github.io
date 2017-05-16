@@ -141,7 +141,7 @@ wget https://extdist.wmflabs.org/dist/extensions/VisualEditor-REL1_28-93528b7.ta
 tar -xzf VisualEditor-REL1_28-93528b7.tar.gz -C /var/www/wiki/extensions
 ```
 
-编辑/etc/www/html/wiki/LocalSettings.php，追加如下内容：
+编辑/var/www/html/wiki/LocalSettings.php，追加如下内容：
 
 ```
 wfLoadExtension( 'VisualEditor' );
@@ -204,6 +204,30 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
         'prefix' => 'localhost'
 );
 ```
+
+### 9. 私有化
+
+*2017年5月16日增补*
+
+编辑/var/www/html/wiki/LocalSettings，
+
+```
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['*']['read'] = false;
+$wgGroupPermissions['*']['edit'] = false;
+
+$wgSessionsInObjectCache = true;
+$wgVirtualRestConfig['modules']['parsoid']['forwardCookies'] = true;
+```
+
+禁用了匿名用户的查看、编辑、创建用户功能。并转发cookies到parsoid。后面2句必须添加，否则私有维基无法使用VisualEditor。
+想要开放匿名用户对指定页面的查看权限，使用如下语句：
+
+```
+$wgWhitelistRead = array(urldecode("%E9%A6%96%E9%A1%B5"));
+```
+
+开启了“首页”的匿名查看权限。
 
 ## 搭建邮件服务器
 
