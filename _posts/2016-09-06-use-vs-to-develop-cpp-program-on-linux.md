@@ -34,14 +34,14 @@ tags:
 安装前提：Visual Studio版本为Update3。下载后按照提示安装之。
 
 3 打开Visual Studio，新建工程，模板为：Templates > Visual C++ > Cross Platform > Linux > Empty Project (Linux)。也可以调试UI程序的，但我只需要console程序就够了。
-![img](http://115.231.175.17/img/new-linux-blank-project.png)
+![img](http://os07mvnhm.bkt.clouddn.com/new-linux-blank-project.png)
 
 4 写个HelloWorld程序，编译一下，会弹出连接远程Linux主机的提示，填写它！
-![img](http://115.231.175.17/img/HelloWorlCpp.png)
-![img](http://115.231.175.17/img/Connect-to-Linux-first-connection.png)
+![img](http://os07mvnhm.bkt.clouddn.com/HelloWorlCpp.png)
+![img](http://os07mvnhm.bkt.clouddn.com/Connect-to-Linux-first-connection.png)
 
 5 点Remote GDB Debugger，开始远程调试吧，不要太爽！Output窗口完美映射GDB，还可以在右上角搜索Linux Console，将程序的输出也显示出来，简直 perfect ！
-![img](http://115.231.175.17/img/Output-and-Linux-Console.png)
+![img](http://os07mvnhm.bkt.clouddn.com/Output-and-Linux-Console.png)
 
 6 总结：微软大法好，Coders Use VS 保平安！哈哈，还差一步，插件没有自动引用Linux的头文件，需要手动从Linux主机的/usr/include拷贝到本机并添加到vs的c++ path中。Enjoy it！
 

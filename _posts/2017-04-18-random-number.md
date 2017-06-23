@@ -14,7 +14,7 @@ tags:
 ## 坏例子：不要使用rand()
 注：截图来自[rand() Considered Harmful](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful)，[youtube](https://www.youtube.com/watch?v=LDPMpc-ENqY)上也有，演讲者为Stephan T. Lavavej。
 
-![img](http://115.231.175.17/img/random/what_is_wroing_with_cstyle_code.png)
+![img](http://os07mvnhm.bkt.clouddn.com/what_is_wroing_with_cstyle_code.png)
 
 Stephan 列出了如下缺陷：
 * 不应该使用NULL，而应该使用nullptr
@@ -28,7 +28,7 @@ Stephan 列出了如下缺陷：
 ---
 即使假设rand()结果均匀分布，使用取余（%）仍然有问题：
 
-![img](http://115.231.175.17/img/random/why_modulo_is_bad.png)
+![img](http://os07mvnhm.bkt.clouddn.com/why_modulo_is_bad.png)
 
 明显可以得知，当取余对象不能被rand()范围整除时，有一部分数值产生的余数概率略低。上图的例子中，整百数到整百数+99共100个数字可以均匀得到[0,99]之间的结果，但[32700,32767]内只能产生[0,67]之间的结果。
 
@@ -44,14 +44,14 @@ Stephan 列出了如下缺陷：
 
 来看[Stack Overflow](http://stackoverflow.com/questions/4195958/how-do-i-scale-down-numbers-from-rand) 上Justin Niessner的答案（这位仁兄被批判的够惨。。。）使用浮点数产生随机数的例子：
 
-![img](http://115.231.175.17/img/random/floating_point_treachery.png)
+![img](http://os07mvnhm.bkt.clouddn.com/floating_point_treachery.png)
 
 上图可以看出，只有rand()返回32767时结果为99，概率低于其他数值，仍然是非均匀的。
 
 ---
 再来看一个使用浮点数的改进版例子：
 
-![img](http://115.231.175.17/img/random/floating_point_double_treachery.png)
+![img](http://os07mvnhm.bkt.clouddn.com/floating_point_double_treachery.png)
 
 结果比上一个例子均匀了很多，但仍然不是完全均匀的。Stephan给的解释非常妙：
 
@@ -60,7 +60,7 @@ Stephan 列出了如下缺陷：
 ---
 继续谈浮点数。
 
-![img](http://115.231.175.17/img/random/floating_point_triple_treachery.png)
+![img](http://os07mvnhm.bkt.clouddn.com/floating_point_triple_treachery.png)
 
 当输入样本足够大时（2^64），double的精度（有效位数53bits）无法表示了。
 
@@ -117,14 +117,14 @@ std::cout << std::endl;
 
 引擎、分布有很多，常用的不多，Stephan给出了他推荐的3个引擎：
 
-![img](http://115.231.175.17/img/random/uniform_random_number_generators.png)
+![img](http://os07mvnhm.bkt.clouddn.com/uniform_random_number_generators.png)
 
 相比之下，仍然是mt19937和mt19937_64更常用。
 
 ---
 ## 一些值得注意的地方：
 
-![img](http://115.231.175.17/img/random/random_notes.png)
+![img](http://os07mvnhm.bkt.clouddn.com/random_notes.png)
 
 * 引擎生成随机数很快，但构造不够快，应该尽量避免多次构造引擎
 * 同一个引擎的初始状态是相同的，会产生相同的随机数序列

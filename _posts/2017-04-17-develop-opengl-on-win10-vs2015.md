@@ -13,7 +13,7 @@ tags:
 ---
 
 之前在实验楼学了一个[C++实现太阳系行星系统](https://www.shiyanlou.com/courses/558)的课程，在他的web虚拟机中死活运行失败
-![img](http://115.231.175.17/img/solar_system_execute_error.png)
+![img](http://os07mvnhm.bkt.clouddn.com/solar_system_execute_error.png)
 所以试着在熟悉的环境下编译一次。
 搜索了不少资料，发现opengl这玩意有点过时，而且不像其他开源库那样有源码，只能通过一些第三方的库实现。
 
@@ -29,7 +29,7 @@ Windows下环境搭建，有点扯淡，不过还好我身经百战，这种事�
 
 1.新建一个文件夹存放所有所需的头文件和dll/lib文件
 目录结构类似
-![img](http://115.231.175.17/img/opengl_file_structure.png)
+![img](http://os07mvnhm.bkt.clouddn.com/opengl_file_structure.png)
 
 2.下载[glut](http://freeglut.sourceforge.net/index.php#download)
 版本不要选3.0.0，那个没有vs的sln文件，下载2.8.1版本的。
@@ -42,9 +42,9 @@ Windows下环境搭建，有点扯淡，不过还好我身经百战，这种事�
 可以到[opengl_win10_vs2015](https://github.com/captainwong/opengl_win10_vs2015)下载opengl.7z文件，已经包含了include和lib
 
 5.运行效果
-![img](http://115.231.175.17/img/solar_system.png)
+![img](http://os07mvnhm.bkt.clouddn.com/solar_system.png)
 动态图：
-![img](http://115.231.175.17/img/solar_system.gif)
+![img](http://os07mvnhm.bkt.clouddn.com/solar_system.gif)
 
 后来呢，发现在Ubuntu下不能运行的原因是这一句：
 
