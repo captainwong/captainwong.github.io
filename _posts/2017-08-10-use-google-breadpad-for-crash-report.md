@@ -64,7 +64,7 @@ mv $sym $sdir
 
 崩溃后自动调用写好的脚本生成stack walk并发送邮件给自己的邮箱
 
-{% highlight C++ %}
+```
 #include <client/linux/handler/exception_handler.h>
 
 void crash_send(const std::string& dmp_path)
@@ -97,8 +97,7 @@ int main()
 	google_breakpad::MinidumpDescriptor descriptor("/tmp");
 	google_breakpad::ExceptionHandler eh(descriptor, nullptr, dumpCallback, nullptr, true, -1);
 }
-
-{% endhighlight %}
+```
 
 以下是send_mail_.sh部分代码：
 
