@@ -165,7 +165,6 @@ while IFS= read -r line
 do
    echo "${line}<br/>"
 done <"$dmp"
-
 ```
 
 以下是收到的邮件部分内容：
@@ -175,7 +174,7 @@ done <"$dmp"
 Crash Dump:
 2017-08-09 21:57:06: minidump.cc:4811: INFO: Minidump opened minidump /tmp/5f4b59c2-19b1-43e2-5fec0e9c-76809ea0.dmp
 
-...
+……
 
 Operating system: Linux
 0.0.0 Linux 4.4.0-87-generic #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017 x86_64
@@ -202,7 +201,7 @@ r14 = 0x0000000000000001 r15 = 0x0000000000000000
 rip = 0x00007eff4892a428
 Found by: given as instruction pointer in context
 
-...
+……
 
 17 libc-2.23.so + 0x2dc82
 rsp = 0x00007fffe172e500 rip = 0x00007eff48922c82
