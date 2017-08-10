@@ -64,7 +64,7 @@ mv $sym $sdir
 
 崩溃后自动调用写好的脚本生成stack walk并发送邮件给自己的邮箱
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 #include <client/linux/handler/exception_handler.h>
 
 void crash_send(const std::string& dmp_path)
