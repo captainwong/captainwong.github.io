@@ -17,20 +17,20 @@ tags:
 前阵子写的微信公众号后台服务器自动崩溃重启了一次，看日志没任何头绪，看来需要core dump。
 但是搜索一阵子发现，这玩意真难用，要`ulimit -c unlimited`后才会生成dump。又搜索一番，发现Google出品的breadpad，谷歌出品，必属精品，就它了！
 
-* 1. 按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码
+1. 按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码
 
 ```
 git clone https://chromium.googlesource.com/breakpad/breakpad
 ```
 
-* 2. 有几个第三方库默认情况没有下载，按需手动下载到breakpad/src/thirdparty中
+2. 有几个第三方库默认情况没有下载，按需手动下载到breakpad/src/thirdparty中
 
 ```
 cd breakpad
 git clone https://chromium.googlesource.com/linux-syscall-support src/third_party/lss
 ```
 
-* 3. 编译安装
+3. 编译安装
 
 ```
 ./configure
@@ -41,7 +41,7 @@ sudo make install
 
 安装目录默认为/usr/local/include/breakpad，库目录/usr/local/lib/libbreakpad.a, libbreakpad_client.a
 
-* 4. 应用
+4. 应用
 
 方便起见，写了一个自动生成symbol调试信息的脚本build_symbols.sh:
 
@@ -219,7 +219,7 @@ Found by: stack scanning
 
 至于Linux发送邮件的配置，可以参考[Ubuntu下部署MediaWiKi小记](http://wangyapeng.me/2017/05/14/unbuntu-setup-mediawiki/)。
 
-参考资料：
+5. 参考资料：
 
 * [breakpad](https://chromium.googlesource.com/breakpad/breakpad)
 * [compile error: fatal error: third_party/lss/linux_syscall_support.h: No such file or directory](https://bugs.chromium.org/p/google-breakpad/issues/detail?id=541)
