@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "使用Google开源库breadpad实现错误报告功能"
+title:  "使用Google开源库breakpad实现错误报告功能"
 subtitle: "Google大法好"
 date:   "2017-08-10" 
 author: "cj"
 tags:
-    breadpad
+    breakpad
     c++
     linux
     google
@@ -15,7 +15,7 @@ tags:
 
 
 前阵子写的微信公众号后台服务器自动崩溃重启了一次，看日志没任何头绪，看来需要core dump。
-但是搜索一阵子发现，这玩意真难用，要`ulimit -c unlimited`后才会生成dump。又搜索一番，发现Google出品的breadpad，谷歌出品，必属精品，就它了！
+但是搜索一阵子发现，这玩意真难用，要`ulimit -c unlimited`后才会生成dump。又搜索一番，发现Google出品的breakpad，谷歌出品，必属精品，就它了！
 
 * 按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码
 
