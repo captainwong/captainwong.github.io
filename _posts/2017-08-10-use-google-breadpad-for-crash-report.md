@@ -57,7 +57,7 @@ mkdir -p $sdir
 mv $sym $sdir
 ```
 
-用例./build_symbols.sh test
+用例`./build_symbols.sh test`
 
 我把它写在了makefile中的make release段内。
 
