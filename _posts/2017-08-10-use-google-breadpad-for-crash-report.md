@@ -101,7 +101,7 @@ int main()
 
 以下是send_mail_.sh部分代码：
 
-{% highlight shell linenos %}
+{% highlight shell %}
 #!/bin/bash
 basedir=/home/ubuntu/wechat_server/tools
 #basedir=/home/jack/projects/test
