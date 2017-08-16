@@ -21,12 +21,12 @@ Windows环境下以前使用的CrashRpt1403错误报告系统出了点问题，�
     2. [编译](#编译)
 2. [部署](#部署)
     1. [生成sym并上传](#生成sym并上传)
-        1. [Windows-publish](#Windows-Publish)
-        2. [Linux-publish](#Linux-Publish)
+        1. [windows-publish](#windows-publish)
+        2. [linux-publish](#linux-publish)
     2. [应用程序植入breakpad](#应用程序植入breakpad)
     3. [处理应用程序崩溃](#处理应用程序崩溃)
-        1. [Windows-Report](#Windows-Report)
-        2. [Linux-Report](#Linux-Report)
+        1. [windows-report](#windows-report)
+        2. [linux-report](#linux-report)
     4. [邮件示例](#邮件示例)
 3. [参考资料](#参考资料)
 
@@ -82,7 +82,7 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 
 新版本发布时，自动生成sym文件并上传
 
-### Windows-Publish
+### windows-publish
 
 参考了这篇[文章](https://www.chromium.org/developers/decoding-crash-dumps)，摘录如下：
 
@@ -138,7 +138,7 @@ del publish.7z
 echo Done!
 ```
 
-### Linux-Publish
+### linux-publish
 
 * publish.php
 
@@ -354,7 +354,7 @@ int main()
 ```
 
 ## 处理应用程序崩溃
-### Windows-Report
+### windows-report
 
 * report.bat
 
@@ -376,9 +376,9 @@ cd ..\tools
 echo Done!
 ```
 
-### Linux-Report
+### linux-report
 
-1. report.php
+* report.php
 
 ```php
 <?php
@@ -492,7 +492,7 @@ done(200, "Success.");
 ?>
 ```
 
-2. process.sh
+* process.sh
 
 ```bash
 #!/bin/bash
@@ -569,7 +569,7 @@ rm $ip_xml
 echo Done!
 ```
 
-3. send_mail_.sh
+* send_mail_.sh
 
 ```bash
 #!/bin/bash
