@@ -34,7 +34,7 @@ Windows环境下以前使用的CrashRpt1403错误报告系统出了点问题，�
 
 ## 下载
 
-按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码[jump]
+按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码
 
 ```bash
 git clone https://chromium.googlesource.com/breakpad/breakpad
