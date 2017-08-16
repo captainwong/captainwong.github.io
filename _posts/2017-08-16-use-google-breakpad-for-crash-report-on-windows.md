@@ -30,9 +30,9 @@ Windows环境下以前使用的CrashRpt1403错误报告系统出了点问题，�
     4. [邮件示例](#mail)
 3. [参考资料](#refs)
 
-# <a name=install></a>环境搭建
+# 环境搭建
 
-## <a name=download></a>下载
+## 下载
 
 按照[官方教程](https://chromium.googlesource.com/breakpad/breakpad)，下载源码[jump]
 
@@ -47,7 +47,7 @@ cd breakpad
 git clone https://chromium.googlesource.com/linux-syscall-support src/third_party/lss
 ```
 
-## <a name=build></a>编译
+## 编译
 
 与linux环境下直接configure&&make不同，Windows下需要google另一个工具gyp生成visual studio 的sln文件。另外gyp依赖Python2.x版本，如果系统环境变量PATH中指定的python.exe已经是Python3.x版的话，需要手动修改。Python2.x与3.x共用方案网上一搜大把不再赘述。
 
@@ -72,17 +72,17 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 * crash_generation_client.lib
 
 
-# <a name=deploy></a>部署
+# 部署
 
 在Windows下编译好应用程序后，使用breakpad的工具dump_syms.exe生成sym符号表，并上传至服务器。当客户环境中的应用程序崩溃时，调用一个脚本将dump信息上传至服务器，服务器端处理一下并生成stack walk信息发送到自己的邮箱。思路与上一篇linux版完全一样，只不过生成sym的环境换成了Windows，并增加了web服务以便处理。
 
 下面以分为新版本发布时的“生成sym”和崩溃发生时的“处理dmp”记录一下。
 
-## <a name=gen_sym></a>生成sym并上传
+## 生成sym并上传
 
 新版本发布时，自动生成sym文件并上传
 
-### <a name=gen_sym_win></a>Windows环境运行
+### Windows publish
 
 参考了这篇[文章](https://www.chromium.org/developers/decoding-crash-dumps)，摘录如下：
 
@@ -138,7 +138,7 @@ del publish.7z
 echo Done!
 ```
 
-### <a name=gen_sym_linux></a>Linux服务器环境运行
+### Linux publish
 
 * publish.php
 
