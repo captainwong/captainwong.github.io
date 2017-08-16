@@ -21,14 +21,14 @@ Windows环境下以前使用的CrashRpt1403错误报告系统出了点问题，�
     2. [编译](#编译)
 2. [部署](#部署)
     1. [生成sym并上传](#生成sym并上传)
-        1. [Windows publish](#Windows publish)
-        2. [Linux publish](#Linux publish)
-    2. [应用程序植入breakpad](#integrate)
-    3. [处理应用程序崩溃](#report)
-        1. [Windows](#report_win)
-        2. [Linux](#report_linux)
-    4. [邮件示例](#mail)
-3. [参考资料](#refs)
+        1. [Windows-publish](#Windows-Publish)
+        2. [Linux-publish](#Linux-Publish)
+    2. [应用程序植入breakpad](#应用程序植入breakpad)
+    3. [处理应用程序崩溃](#处理应用程序崩溃)
+        1. [Windows-Report](#Windows-Report)
+        2. [Linux-Report](#Linux-Report)
+    4. [邮件示例](#邮件示例)
+3. [参考资料](#参考资料)
 
 # 环境搭建
 
@@ -82,7 +82,7 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 
 新版本发布时，自动生成sym文件并上传
 
-### Windows publish
+### Windows-Publish
 
 参考了这篇[文章](https://www.chromium.org/developers/decoding-crash-dumps)，摘录如下：
 
@@ -138,7 +138,7 @@ del publish.7z
 echo Done!
 ```
 
-### Linux publish
+### Linux-Publish
 
 * publish.php
 
@@ -287,7 +287,7 @@ mv your-app.sym $sdir
 echo Build symbols OK
 ```
 
-## <a name=integrate>应用程序植入breakpad
+## 应用程序植入breakpad
 
 按照breakpad官方文档[Windows Integration overview](https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/windows_client_integration.md)，应用程序中如此这般：
 
@@ -353,8 +353,8 @@ int main()
         +-- report.bat
 ```
 
-## <a name=report>处理应用程序崩溃
-### <a name=report_win>Windows
+## 处理应用程序崩溃
+### Windows-Report
 
 * report.bat
 
@@ -376,7 +376,7 @@ cd ..\tools
 echo Done!
 ```
 
-### <a name=report_linux>Linux
+### Linux-Report
 
 1. report.php
 
@@ -623,7 +623,7 @@ done <"$to_user_file"
 
 ```
 
-### <a name=mail></a>邮件示例
+### 邮件示例
 
 以下是收到的邮件部分内容：
 
@@ -669,7 +669,7 @@ Found by: call frame info
 
 可以清楚的看到崩溃发生在了logindlg.cpp文件的71行，函数为CLoginDlg::OnBnClickedOk。
 
-# <a name=refs></a>参考资料
+# 参考资料
 
 * [breakpad](https://chromium.googlesource.com/breakpad/breakpad)
 * [How to build google google-breakpad for windows?](https://stackoverflow.com/questions/3618721/how-to-build-google-google-breakpad-for-windows)
