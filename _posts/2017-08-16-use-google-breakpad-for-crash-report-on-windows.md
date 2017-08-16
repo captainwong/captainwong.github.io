@@ -16,13 +16,13 @@ Windows环境下以前使用的CrashRpt1403错误报告系统出了点问题，�
 
 # 目录
 
-1. [环境搭建](#install)
-    1. [下载](#download)
-    2. [编译](#build)
-2. [部署](#deploy)
-    1. [生成sym并上传](#gen_sym)
-        1. [Windows](#gen_sym_win)
-        2. [Linux](#gen_sym_linux)
+1. [环境搭建](#环境搭建)
+    1. [下载](#下载)
+    2. [编译](#编译)
+2. [部署](#部署)
+    1. [生成sym并上传](#生成sym并上传)
+        1. [Windows publish](#Windows publish)
+        2. [Linux publish](#Linux publish)
     2. [应用程序植入breakpad](#integrate)
     3. [处理应用程序崩溃](#report)
         1. [Windows](#report_win)
