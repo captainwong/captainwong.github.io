@@ -47,6 +47,7 @@ winsock.h与winsock2.h的一些宏定义如IP_ADD_MEMBERSHIP使用了不同的�
 具体可参考[INFO: Header and Library Requirement When Set/Get Socket Options at the IPPROTO_IP Level](https://support.microsoft.com/en-us/help/257460/info-header-and-library-requirement-when-set-get-socket-options-at-the)
 
 # 发送端
+## 单网卡环境
 无需多提，仅需创建UDP socket，将数据报发送至D类地址的某个约定好的端口即可。
 ``` c++
 struct sockaddr_in addr = {};
@@ -72,6 +73,63 @@ while (true) {
     Sleep(1000);
 }
 ```
+## 多网卡环境
+必须绑定并设置出口网卡，否则会使用系统网卡列表的第一个，有可能不是与其他设备同一个局域网的网卡。
+``` c++
+int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+if (-1 == sockfd) {
+    printf("socket error!!!\n");
+    perror("socket:");
+    return -1;
+}
+
+int reuse = 1;
+if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const char *)&reuse, sizeof(reuse)) < 0) {
+    perror("Setting SO_REUSEADDR error");
+    closesocket(sockfd);
+    return -1;
+}
+
+struct sockaddr_in addr = {};
+addr.sin_family = AF_INET;
+addr.sin_port = htons(MULTICAST_GROUP_PORT);
+addr.sin_addr.s_addr = INADDR_ANY;
+int addr_len = sizeof(addr);
+int ret = bind(sockfd, (struct sockaddr*)&addr, sizeof(struct sockaddr));
+if (-1 == ret) {
+    printf("bind localaddr error!!!\n");
+    perror("bind:");
+    closesocket(sockfd);
+    return -1;
+}
+
+unsigned long if_addr = inet_addr(LOCAL_IP);
+ret = setsockopt(sockfd, IPPROTO_IP, IP_MULTICAST_IF, (const char*)&if_addr, sizeof(if_addr));
+if (-1 == ret) {
+    printf("IP_MULTICAST_IF error!!!\n");
+    perror("setsockopt:");
+    closesocket(sockfd);
+    return -1;
+}
+
+char host[1024] = { 0 };
+gethostname(host, 1024);
+
+int msgNo = 0;
+char msg[1024] = { 0 };
+addr.sin_addr.s_addr = inet_addr(MULTICAST_GROUP_ADDRESS);
+while (true) {
+    sprintf(msg, "Groupcast Message %s No.%d", host, msgNo++);
+    int ret = sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr*)&addr, addr_len);
+    if (ret < 0) {
+        perror("sendto");
+        return -1;
+    } else {
+        printf("Sent msg: %s\n", msg);
+    }
+    Sleep(1000);
+}
+````
 
 
 # 接收端
