@@ -37,7 +37,9 @@ static const auto LOCAL_IP = "192.168.1.222";
 winsock.h与winsock2.h的一些宏定义如IP_ADD_MEMBERSHIP使用了不同的值，因此须特别注意。这破问题我是在join gruop(```setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP...)```)始终失败，后来检查错误码为10042 (WSAENOPROTOOPT)，搜索得知不可直接```#include <windows.h>```, 而需要
 ``` c++
 #include <WinSock2.h>
+
 #include <Ws2tcpip.h>
+
 #include <stdio.h>
 
 #pragma comment(lib, "ws2_32.lib")
@@ -171,7 +173,7 @@ ipmr.imr_interface.s_addr = inet_addr(LOCAL_IP);
 * [[QTBUG-27641] Multicast joining fails on multiple interfaces - Qt Bug Tracker](https://bugreports.qt.io/browse/QTBUG-27641)
 * [Multicast/Broadcast questions | Qt Forum](https://forum.qt.io/topic/27579/multicast-broadcast-questions/6)
 * [How to fix the global broadcast address (255.255.255.255) behavior on Windows?](https://social.technet.microsoft.com/Forums/windows/en-US/72e7387a-9f2c-4bf4-a004-c89ddde1c8aa/how-to-fix-the-global-broadcast-address-255255255255-behavior-on-windows?forum=w7itpronetworking)
-* [[Solved] UDP broadcast on multiple ethernet interfaces/adapters - CodeProject](https://www.codeproject.com/Questions/524739/UDPplusbroadcastplusonplusmultipleplusethernetplus)
+* [(Solved) UDP broadcast on multiple ethernet interfaces/adapters - CodeProject](https://www.codeproject.com/Questions/524739/UDPplusbroadcastplusonplusmultipleplusethernetplus)
 * [qtbase/qnativesocketengine_win.cpp at 5.10 · qt/qtbase](https://github.com/qt/qtbase/blob/5.10/src/network/socket/qnativesocketengine_win.cpp)
 * [DingHe/unpv13e: UNIX网络编程 卷1：套接字联网API（第3版）源代码](https://github.com/DingHe/unpv13e)
 * [INFO: Header and Library Requirement When Set/Get Socket Options at the IPPROTO_IP Level](https://support.microsoft.com/en-us/help/257460/info-header-and-library-requirement-when-set-get-socket-options-at-the)
