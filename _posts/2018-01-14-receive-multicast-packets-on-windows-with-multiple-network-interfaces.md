@@ -213,12 +213,8 @@ while (1) {
 ipmr.imr_interface.s_addr = inet_addr(LOCAL_IP);
 ```
 
-
-
-
-
-
-
+# 备注
+以上所有源码可在[https://github.com/captainwong/mcast](https://github.com/captainwong/mcast)获取。
 
 
 # Reference
