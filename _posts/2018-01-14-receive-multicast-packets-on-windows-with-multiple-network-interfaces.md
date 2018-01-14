@@ -171,7 +171,7 @@ ipmr.imr_interface.s_addr = inet_addr(LOCAL_IP);
 * [c++ - Qt: joinMulticastGroup for all interface - Stack Overflow](https://stackoverflow.com/questions/19218994/qt-joinmulticastgroup-for-all-interface)
 * [sockets - Qt QUdpSocket fails to receive multicast udp packets on a specific interface - Stack Overflow](https://stackoverflow.com/questions/46303447/qt-qudpsocket-fails-to-receive-multicast-udp-packets-on-a-specific-interface)
 * [[QTBUG-27641] Multicast joining fails on multiple interfaces - Qt Bug Tracker](https://bugreports.qt.io/browse/QTBUG-27641)
-* [Multicast/Broadcast questions | Qt Forum](https://forum.qt.io/topic/27579/multicast-broadcast-questions/6)
+* [Multicast/Broadcast questions - Qt Forum](https://forum.qt.io/topic/27579/multicast-broadcast-questions/6)
 * [How to fix the global broadcast address (255.255.255.255) behavior on Windows?](https://social.technet.microsoft.com/Forums/windows/en-US/72e7387a-9f2c-4bf4-a004-c89ddde1c8aa/how-to-fix-the-global-broadcast-address-255255255255-behavior-on-windows?forum=w7itpronetworking)
 * [(Solved) UDP broadcast on multiple ethernet interfaces/adapters - CodeProject](https://www.codeproject.com/Questions/524739/UDPplusbroadcastplusonplusmultipleplusethernetplus)
 * [qtbase/qnativesocketengine_win.cpp at 5.10 · qt/qtbase](https://github.com/qt/qtbase/blob/5.10/src/network/socket/qnativesocketengine_win.cpp)
