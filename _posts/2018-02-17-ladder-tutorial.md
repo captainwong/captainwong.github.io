@@ -121,7 +121,7 @@ tags:
 
 ## 5.1 安装
 
-在putty内输入以下3条命令，回车运行
+在putty内输入以下命令，回车运行
 
 ``` shell
 yum install python-setuptools -y && easy_install pip && pip install shadowsocks
@@ -129,7 +129,7 @@ yum install python-setuptools -y && easy_install pip && pip install shadowsocks
 
 ## 5.2 运行
 
-在putty内输入以下3条命令，回车运行
+在putty内输入以下命令，回车运行
 
 ``` shell
 sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start
@@ -195,7 +195,7 @@ sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start
 
 ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/android/3.jpg)
 
-## 7.4 设置
+## 7.4 测试
 
 ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/android/4.jpg)
 
