@@ -13,9 +13,11 @@ tags:
 总结一下梯子制作方法以便交流。
 
 # 1. 概述
+
 购买物理坐标位于国外的虚拟主机，安装shadowsocks服务。本地计算机或手机或路由器安装shadowsocks客户端，即可越过长城，走向世界。
 
 # 2. 选购虚拟主机
+
 - 2.1 访问[50vz vps](https://www.50vz.net/aff.php?aff=853)(点这个链接有10块钱优惠哦~)
 
 ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/step1.png)
@@ -68,6 +70,7 @@ tags:
 # 3. 安装远程连接工具putty
 
 ## 3.1 下载
+
 点击下载[putty](https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.70-installer.msi)
 
 ## 3.2 安装
