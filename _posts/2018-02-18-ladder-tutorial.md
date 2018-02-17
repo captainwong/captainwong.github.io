@@ -2,13 +2,15 @@
 layout: post
 title:  "梯子制作方法"
 subtitle: "越过长城，走向世界"
-date:   "2018-2-17" 
+date:   "2018-2-18" 
 author: "cj"
 tags:
     gfw
     vps
     shadowsocks
 ---
+
+> 转载请保留[原文链接](http://wangyapeng.me/2018/02/18/ladder-tutorial/)
 
 总结一下梯子制作方法以便交流。
 
