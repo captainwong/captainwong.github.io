@@ -186,7 +186,7 @@ serverInterface: '127.0.0.1'
 运行
 
 ```
-nohup npm bin/server.js &
+nohup node bin/server.js &
 ```
 
 测试
