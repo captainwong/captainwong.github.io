@@ -158,7 +158,7 @@ sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start
 
 勾选启用系统代理；可选开机启动；点击 PAC--从GFWList更新本地PAC。
 
-![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/ss_config2.png)
+![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/ss_config2.webp)
 
 ## 6.3 测试
 
@@ -176,13 +176,13 @@ sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start
 
 ## 7.2 运行
 
-![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-1.jpg)
+![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-1.webp)
 
 ## 7.3 配置
 
 点击上图中的铅笔按钮进行配置
 
-![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-2.jpg)
+![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-2.webp)
 
 服务器、端口、密码填写5.2设置的内容；路由设置为“绕过局域网及中国大陆地址”，也可按需选择其他选项；保存。
 
@@ -190,11 +190,11 @@ sudo ssserver -p 443 -k password -m aes-256-cfb --user nobody -d start
 
 点击7.2图中的小飞机按钮进行开启和关闭代理。
 
-![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-3.jpg)
+![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-3.webp)
 
 ## 7.4 测试
 
-![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-4.jpg)
+![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/android-4.webp)
 
 # 8. 苹果设备
 
