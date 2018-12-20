@@ -13,9 +13,7 @@ tags:
 
 > 说明：本文仅针对IPv4
 
-
 局域网发现技术有很多，常用组播（或称为多播）：一台设备发送组播包，其他设备加入组播组，接收到组播包时即可知晓发送端IP，接收端回应约定数据即可让发送端也得知这些接收端的IP。
-
 
 # 组播地址与端口号
 
@@ -27,29 +25,33 @@ IPv4的D类地址（224.0.0.0至239.255.255.255）是IPv4多播地址。D类地�
 一般应用程序使用239.0.0.0~239.255.255.255之间的地址，称作可管理地划分范围的IPv4多播空间（administratively scoped IPv4 multicast space）（RFC2365）。
 
 本文使用239.254.43.21:45454作为组播地址和端口号
-``` c++
+
+``` cpp
 static const auto MULTICAST_GROUP_ADDRESS = "239.255.43.21";
 static const unsigned short MULTICAST_GROUP_PORT = 45454;
 static const auto LOCAL_IP = "192.168.1.222";
 ```
 
 # WinSock2编程须知
-winsock.h与winsock2.h的一些宏定义如IP_ADD_MEMBERSHIP使用了不同的值，因此须特别注意。这破问题我是在join gruop(```setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP...)```)始终失败，后来检查错误码为10042 (WSAENOPROTOOPT)，搜索得知不可直接```#include <windows.h>```, 而需要
+
+winsock.h与winsock2.h的一些宏定义如`IP_ADD_MEMBERSHIP`使用了不同的值，因此须特别注意。这破问题我是在join gruop(```setsockopt(sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP...)```)始终失败，后来检查错误码为10042 (WSAENOPROTOOPT)，搜索得知不可直接`#include <windows.h>`, 而需要
+
 ``` c++
 #include <WinSock2.h>
-
 #include <Ws2tcpip.h>
-
 #include <stdio.h>
-
 #pragma comment(lib, "ws2_32.lib")
 ```
+
 具体可参考[INFO: Header and Library Requirement When Set/Get Socket Options at the IPPROTO_IP Level](https://support.microsoft.com/en-us/help/257460/info-header-and-library-requirement-when-set-get-socket-options-at-the)
 
 # 发送端
+
 ## 单网卡环境
+
 无需多提，仅需创建UDP socket，将数据报发送至D类地址的某个约定好的端口即可。
-``` c++
+
+```c
 struct sockaddr_in addr = {};
 addr.sin_family = AF_INET;
 addr.sin_port = htons(MULTICAST_GROUP_PORT);
@@ -73,9 +75,12 @@ while (true) {
     Sleep(1000);
 }
 ```
+
 ## 多网卡环境
+
 必须绑定并设置出口网卡，否则会使用系统网卡列表的第一个，有可能不是与其他设备同一个局域网的网卡。
-``` c++
+
+```c
 int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 if (-1 == sockfd) {
     printf("socket error!!!\n");
@@ -129,8 +134,7 @@ while (true) {
     }
     Sleep(1000);
 }
-````
-
+```
 
 # 接收端
 
@@ -138,9 +142,8 @@ while (true) {
 
 非常简单，网上的demo也大多针对这种情况。
 创建UDP socket，绑定INADDR_ANY、约定的端口，加入组播组，接收即可。
-``` c++
 
-
+```c
 int ret = 0;
 
 int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -206,18 +209,21 @@ while (1) {
 }
 
 ```
+
 ## 多网卡环境
 
 有些不同，加入组播组时若依然使用INADDR_ANY，则内核默认使用网络设备列表的第一个设备，有可能并不是该局域网。因此，需要将INADDR_ANY替换为LOCAL_IP，即本设备与其他互相发现的设备所在局域网的网卡IP。
-``` c++
+
+```c
 ipmr.imr_interface.s_addr = inet_addr(LOCAL_IP);
 ```
 
 # 备注
+
 以上所有源码可在[https://github.com/captainwong/mcast](https://github.com/captainwong/mcast)获取。
 
-
 # Reference
+
 * [局域网发现之UDP组播 - CSDN博客](http://blog.csdn.net/lixin88/article/details/55209630)
 * [局域网发现设备代码实现：udp组播 - CSDN博客](http://blog.csdn.net/lixin88/article/details/56013014)
 * [Multicast Example Programs](http://ntrg.cs.tcd.ie/undergrad/4ba2/multicast/antony/example.html)

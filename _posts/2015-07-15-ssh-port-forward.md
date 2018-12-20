@@ -35,27 +35,30 @@ ssh -R 12345:36.40.73.92:12345 root@wangyapeng.net -p xxxxx
 linux manpage上关于ssh -R的说明为：
 
 >−R
-
+>
 >\[bind_address:\]port:host:hostport
 Specifies that the given port on the remote \(server\) host is to be forwarded to the given host and port on the local side. This works by allocating a socket to listen to port on the remote side, and when\- ever a connection is made to this port, the connection is forwarded over the secure channel, and a connection is made to host port hostport from the local machine.
-
+>
 >Port forwardings can also be specified in the configuration file. Privileged ports can be forwarded only when logging in as root on the remote machine. IPv6 addresses can be specified by enclosing the address in square brackets.
-
+>
 >By default, the listening socket on the server will be bound to the loopback interface only. This may be overridden by specifying a bind_address. An empty bind_address, or the address ‘∗’, indicates that the remote socket should listen on all interfaces. Specifying a remote bind_address will only succeed if the server’s GatewayPorts option is enabled \(see sshd_config\(5\)\).
-
+>
 >If the port argument is ‘0’, the listen port will be dynamically allocated on the server and reported to the client at run time. When used together with -O forward the allocated port will be printed to the standard output.
 
 sh 的-g选项表示绑定监听地址到ADDR_ANY，但我试过之后没有效果。在vps上运行
-{% highlight shell %}
+
+```bash
 telnet localhost 12345
-{% endhighlight %}
+```
 
 本地服务器程序确实收到了连接，说明ssh端口转发已经生效，只不过sshd只接受本机发起的连接而已。
 
 再来看ssh -R的说明，需要sshd_config的选项GatewayPorts为yes才可以，相当于-g。修改之后，再在本机上执行
-{% highlight shell %}
+
+```bash
 telnet wangyapeng.net 12345
-{% endhighlight %}
+```
+
 成功！
 
 参考资料：

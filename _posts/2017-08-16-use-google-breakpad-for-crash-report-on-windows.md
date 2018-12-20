@@ -71,7 +71,6 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 * exception_handler.lib
 * crash_generation_client.lib
 
-
 # 部署
 
 在Windows下编译好应用程序后，使用breakpad的工具dump_syms.exe生成sym符号表，并上传至服务器。当客户环境中的应用程序崩溃时，调用一个脚本将dump信息上传至服务器，服务器端处理一下并生成stack walk信息发送到自己的邮箱。思路与上一篇linux版完全一样，只不过生成sym的环境换成了Windows，并增加了web服务以便处理。
@@ -91,20 +90,21 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 >Windows crash dumps can be decoded the same way as Linux crash dumps. The issue is mainly getting the debugging symbols as a .sym file instead of a .pdb file.
 >
 >To convert a .pdb file to a .sym file:
+>
 > 1. Obtain the .pdb file and put it on a Windows machine. (It may be possible to do this with Wine, YMMV.)
 > 2. Download dump_syms.exe.
-> 3. Run: dump_syms foo.pdb > foo.sym
+> 3. Run: `dump_syms foo.pdb > foo.sym`
 >       * If no error messages, then you are done.
->       * If you get: CoCreateInstance CLSID_DiaSource failed (msdia80.dll unregistered?), go to step 4.
-> 4. Get a copy of msdia80.dll and put it in c:\Program Files\Common Files\Microsoft Shared\VC\.
-> 5. As Administrator, run: regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll.
+>       * If you get: `CoCreateInstance CLSID_DiaSource failed (msdia80.dll unregistered?)`, go to step 4.
+> 4. Get a copy of msdia80.dll and put it in `c:\Program Files\Common Files\Microsoft Shared\VC\`.
+> 5. As Administrator, run: `regsvr32 c:\Program Files\Common Files\Microsoft Shared\VC\msdia80.dll`.
 >       * On success, retry step 3.
->       * If you get error 0x80004005, you did not run as Administrator.
-* publish.bat
+>       * If you get error `0x80004005`, you did not run as Administrator.
 
-懒人的解决方案：
 
-```bash
+懒人的解决方案：`publish.bat`
+
+```bat
 @echo off
 rem 引用dump_sym.exe
 set dump_syms="D:\dev_libs\google\breakpad\src\tools\windows\binaries\dump_syms.exe"
@@ -140,7 +140,7 @@ echo Done!
 
 ### linux-publish
 
-* publish.php
+`publish.php`
 
 ```php
 <?php
@@ -157,24 +157,24 @@ function done($return_status, $message)
     // Write HTTP responce code
     header("HTTP/1.0 ".$return_status." ".$message);
     // Write HTTP responce body (for backwards compatibility)
-    echo $return_status." ".$message; 
+    echo $return_status." ".$message;
     exit(0);
 }
 
 // Checks that text fild doesn't contain inacceptable symbols
 function checkOK($field)
 {
-    if (stristr($field, "\\r") || stristr($field, "\\n")) 
+    if (stristr($field, "\\r") || stristr($field, "\\n"))
     {
         done(450, "Invalid input parameter.");
     }
 }
 
 $md5_hash = "";    // MD5 hash for error report ZIP
-$file_name = "";   // Destination file name                                  
+$file_name = "";   // Destination file name
 $pub_version = "";  // Publish version
 
-// Check that MD5 hash exists 
+// Check that MD5 hash exists
 if(!isset($_POST['md5']))
 {
     done(450, "MD5 hash is missing.");
@@ -229,7 +229,7 @@ if(array_key_exists("publish", $_FILES))
     // Move uploaded file to an appropriate directory
     if(!move_uploaded_file($tmp_file_name, $file_name))
     {
-        done(452, "Couldn't save data to local storage"); 
+        done(452, "Couldn't save data to local storage");
     }
 
     // 调用auto_build.sh进行处理
@@ -238,7 +238,7 @@ if(array_key_exists("publish", $_FILES))
 }
 else
 {
-  done(452, "File attachment missing"); 
+  done(452, "File attachment missing");
 }
 
 // OK.
@@ -247,7 +247,7 @@ done(200, "Success.");
 ?>
 ```
 
-* auto_build.sh 解压
+`auto_build.sh` 解压
 
 ```bash
 #!/bin/bash
@@ -291,7 +291,7 @@ echo Build symbols OK
 
 按照breakpad官方文档[Windows Integration overview](https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/windows_client_integration.md)，应用程序中如此这般：
 
-```c++
+```cpp
 #include <client/windows/handler/exception_handler.h>
 #ifdef _DEBUG
 #pragma comment(lib, "client/windows/Debug/lib/common.lib")
@@ -336,7 +336,7 @@ int main()
 
 应用程序安装后的部分文件结构为：
 
-```txt
+```html
 +-- your-app-installation-path/
     +-- 7-zip/
         +-- 7z.exe
@@ -354,11 +354,12 @@ int main()
 ```
 
 ## 处理应用程序崩溃
+
 ### windows-report
 
-* report.bat
+`report.bat`
 
-```bash
+```bat
 @echo on
 set the_7z="..\7-Zip\7z.exe"
 set fciv="fciv.exe"
@@ -378,7 +379,7 @@ echo Done!
 
 ### linux-report
 
-* report.php
+`report.php`
 
 ```php
 <?php
@@ -395,14 +396,14 @@ function done($return_status, $message)
     // Write HTTP responce code
     header("HTTP/1.0 ".$return_status." ".$message);
     // Write HTTP responce body (for backwards compatibility)
-    echo $return_status." ".$message; 
+    echo $return_status." ".$message;
     exit(0);
 }
 
 // Checks that text fild doesn't contain inacceptable symbols
 function checkOK($field)
 {
-    if (stristr($field, "\\r") || stristr($field, "\\n")) 
+    if (stristr($field, "\\r") || stristr($field, "\\n"))
     {
         done(450, "Invalid input parameter.");
     }
@@ -410,7 +411,7 @@ function checkOK($field)
 
 $app_version = ""; // Application Version
 $md5_hash = "";    // MD5 hash for error report ZIP
-$file_name = "";   // Destination file name                                  
+$file_name = "";   // Destination file name
 $crash_guid = "";  // Crash GUID
 
 if(!isset($_POST['appversion']))
@@ -419,7 +420,7 @@ if(!isset($_POST['appversion']))
 }
 $app_version = $_POST['appversion'];
 
-// Check that MD5 hash exists 
+// Check that MD5 hash exists
 if(!isset($_POST['md5']))
 {
     done(450, "MD5 hash is missing.");
@@ -475,7 +476,7 @@ if(array_key_exists("crashrpt", $_FILES))
     // Move uploaded file to an appropriate directory
     if(!move_uploaded_file($tmp_file_name, $file_name))
     {
-        done(452, "Couldn't save data to local storage:".$file_name); 
+        done(452, "Couldn't save data to local storage:".$file_name);
     }
 
     $output = shell_exec($file_root."app/process.sh ".$app_version." ".$crash_guid." ".$_SERVER['REMOTE_ADDR']);
@@ -483,7 +484,7 @@ if(array_key_exists("crashrpt", $_FILES))
 }
 else
 {
-    done(452, "File attachment missing"); 
+    done(452, "File attachment missing");
 }
 
 // OK.
@@ -492,7 +493,7 @@ done(200, "Success.");
 ?>
 ```
 
-* process.sh
+`process.sh`
 
 ```bash
 #!/bin/bash
@@ -569,7 +570,7 @@ rm $ip_xml
 echo Done!
 ```
 
-* send_mail_.sh
+`send_mail_.sh`
 
 ```bash
 #!/bin/bash
@@ -641,7 +642,7 @@ Location:电信
 ...
 
 Operating system: Windows NT
-10.0.14393 
+10.0.14393
 CPU: x86
 GenuineIntel family 6 model 60 stepping 3
 4 CPUs

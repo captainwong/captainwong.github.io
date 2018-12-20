@@ -11,7 +11,6 @@ tags:
     windows
 ---
 
-
 c++操作pdf，搜了很多资料，有很多库可以用，但最终决定使用libharu。
 
 libharu依赖libpng，首先编译之，生成所需libpng16.lib文件。

@@ -53,16 +53,11 @@ tags:
 ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/step8.png)
 
 - 下面这几步不重要
-
-    - 2.9* 付款完成后返回会员中心
-
+  - 2.9* 付款完成后返回会员中心
     ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/step9.png)
-
-    - 2.10* 会员中心里点击刚才买到的虚拟主机
-
+  - 2.10* 会员中心里点击刚才买到的虚拟主机
     ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/step10.png)
-
-    - 2.11* 查看主机信息
+  - 2.11* 查看主机信息
     ![img](http://os07mvnhm.bkt.clouddn.com/ladder-tutorial/step11.png)
 
 - 2.12 查看邮件（重要信息在这）IP、用户名、密码记住，等下要用

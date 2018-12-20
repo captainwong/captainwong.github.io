@@ -12,6 +12,8 @@ tags:
     postfix
 ---
 
+# Ubuntu下部署MediaWiKi小记
+
 ## MediaWiki简介
 
 >MediaWiki是一款基于服务器的自由软件，并获得了 GNU 通用公共许可证 (GPL)的许可。这款软件的设计之目的是使其运行于一个每天拥有百万次点击量网站的大型服务器群组上。
@@ -24,7 +26,6 @@ tags:
 
 没说的，一看是WikiPedia的后台程序，就它了！
 
-
 ## 安装MediaWiki
 
 ### 1.搭建环境
@@ -33,7 +34,7 @@ tags:
 apache2/mysql环境搭建就不提了，基本功。
 因为我80端口另有用途，对外开放的站点都是用https，所以要设置Apache默认监听端口为443。
 
-```
+```bash
 sudo vi /etc/apache2/ports.conf
 Change Listen 80 to Listen 443
 sudo vi /etc/apache2/sites-enabled/000-default.conf
@@ -42,7 +43,7 @@ Change <VirtualHost *:80> to <VirtualHost *:443>
 
 安装php与其他依赖库
 
-```
+```bash
 sudo apt-get update 
 sudo apt-get upgrade
 sudo apt-get install imagemagick php php7.0-intl php7.0-curl php7.0-gd php7.0-mbstring php7.0-mysql libapache2-mod-php php-xml php-mbstring
@@ -55,7 +56,7 @@ sudo phpenmod xml
 
 访问[Download](https://www.mediawiki.org/wiki/Download)页面，下载最新版到/home/user/Downloads
 
-```
+```bash
 wget https://releases.wikimedia.org/mediawiki/1.28/mediawiki-1.28.2.tar.gz
 tar zxvf mediawiki-1.28.2.tar.gz
 sudo mkdir /var/lib/mediawiki
@@ -64,15 +65,14 @@ sudo mv mediawiki-1.28.2/* /var/lib/mediawiki
 
 ### 3. 创建软链接并设置合适的权限
 
-```
+```bash
 ln -s /var/lib/mediawiki /var/www/html/wiki
 chown -R www-data:www-data /var/www/html/wiki
 ```
 
-
 ### 4. 创建数据库
 
-```
+```shell
 mysql -u root -p
 mysql> SET GLOBAL sql_mode='';
 mysql> CREATE DATABASE wikidb;
@@ -84,7 +84,7 @@ mysql> quit
 
 ### 5. 在Apache中添加新虚拟主机的配置并重启Apache
 
-```
+```bash
 touch /etc/apache2/sites-available/mediawiki.conf
 ln -s /etc/apache2/sites-available/mediawiki.conf /etc/apache2/sites-enabled/mediawiki.conf
 vi /etc/apache2/sites-available/mediawiki.conf
@@ -92,7 +92,7 @@ vi /etc/apache2/sites-available/mediawiki.conf
 
 写入如下内容
 
-```
+```bash
 <VirtualHost *:443>
 ServerAdmin admin@your-domain.com
 DocumentRoot /var/www/html/wiki/
@@ -115,12 +115,12 @@ CustomLog /var/log/apache2/your-domain.com-access_log common
 
 ### 6. 配置MediaWiki
 
-访问https://your-domain.com/wiki
+访问[https://your-domain.com/wiki](https://your-domain.com/wiki)
 根据提示进行配置，Store Engine 选择 InnoDB， Database charactor set 选择 UTF-8，其他随意。
 
 配置完成后下载LocalSettings.php并放入/var/www/html/wiki/，在尾部追加如下内容：
 
-```
+```php
 # Speed improvements
 $wgUseGzip = true;
 $wgUseFileCache = true;
@@ -130,20 +130,20 @@ $wgDisableCounters = true;
 $wgMiserMode = true;
 ```
 
-现在可以访问https://your-domain.com/wiki 进行编辑了
+现在可以访问[https://your-domain.com/wiki](https://your-domain.com/wiki) 进行编辑了
 
 ### 7. 安装VisualEditor插件
 
 访问[网址](https://www.mediawiki.org/wiki/Special:ExtensionDistributor?extdistname=VisualEditor&extdistversion=REL1_28)找到最新版VisualEditor下载地址。
 
-```
+```bash
 wget https://extdist.wmflabs.org/dist/extensions/VisualEditor-REL1_28-93528b7.tar.gz
 tar -xzf VisualEditor-REL1_28-93528b7.tar.gz -C /var/www/wiki/extensions
 ```
 
 编辑/var/www/html/wiki/LocalSettings.php，追加如下内容：
 
-```
+```php
 wfLoadExtension( 'VisualEditor' );
 $wgDefaultUserOptions['visualeditor-enable'] = 1;
 $wgHiddenPrefs[] = 'visualeditor-enable';
@@ -152,15 +152,16 @@ $wgHiddenPrefs[] = 'visualeditor-enable';
 此时VisualEditor插件已经生效了，但只能新建词条并编辑，不能保存，不能编辑已有的词条。
 
 ### 8. 安装parsoid
+
 parsoid依赖npm，首先安装npm
 
-```
+```bash
 sudo apt-get install nodejs npm
 ```
 
 下载parsoid到/home/user/Downloads并解压安装
 
-```
+```bash
 git clone https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid
 cd parsoid
 npm install
@@ -168,36 +169,36 @@ npm install
 
 配置parsoid
 
-```
+```bash
 cp config.example.yaml config.yaml
 ```
 
 编辑
 
-```
+```yaml
 uri: 'https://you-domain.com/wiki/api.php'
 domain: 'localhost'  # optional
 serverPort: 8000
 serverInterface: '127.0.0.1'
 ```
 
-注意由于启用了https，因此uri不能使用https://localhost/wiki/api.php ，会导致ssl验证失败无法访问。
+注意由于启用了https，因此uri不能使用[https://localhost/wiki/api.php](https://localhost/wiki/api.php) ，会导致ssl验证失败无法访问。
 
 运行
 
-```
+```bash
 nohup node bin/server.js &
 ```
 
 测试
 
-```
+```bash
 curl localhost:8000
 ```
 
 使MediaWiki可以找到parsoid，编辑/var/www/html/wiki/LocalSettings.php，追加如下内容：
 
-```
+```php
 $wgVirtualRestConfig['modules']['parsoid'] = array(
         'url' => 'http://localhost:8000',
         'domain' => 'localhost',
@@ -211,7 +212,7 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 
 编辑/var/www/html/wiki/LocalSettings.php，
 
-```
+```php
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['*']['read'] = false;
 $wgGroupPermissions['*']['edit'] = false;
@@ -223,7 +224,7 @@ $wgVirtualRestConfig['modules']['parsoid']['forwardCookies'] = true;
 禁用了匿名用户的查看、编辑、创建用户功能。并转发cookies到parsoid。后面2句必须添加，否则私有维基无法使用VisualEditor。
 想要开放匿名用户对指定页面的查看权限，使用如下语句：
 
-```
+```php
 $wgWhitelistRead = array(urldecode("%E9%A6%96%E9%A1%B5"));
 ```
 
@@ -237,7 +238,7 @@ $wgWhitelistRead = array(urldecode("%E9%A6%96%E9%A1%B5"));
 
 ### 1. 创建admin用户
 
-```
+```bash
 sudo useradd -G root admin
 passwd admin
 su - admin
@@ -245,7 +246,7 @@ su - admin
 
 ### 2. 安装
 
-```
+```bash
 sudo DEBIAN_PRIORITY=low apt-get install postfix
 ```
 
@@ -263,7 +264,7 @@ sudo DEBIAN_PRIORITY=low apt-get install postfix
 
 如果有需要随时可以重新配置
 
-```
+```bash
 sudo dpkg-reconfigure postfix
 ```
 
@@ -271,34 +272,34 @@ sudo dpkg-reconfigure postfix
 
 使用Maildir格式，基于用户操作会自动将邮件归档到不同的文件夹（cur, new, sent, tmp）内。另一种可用的格式是mbox，会将所有邮件保存为一个文件。
 
-```
+```bash
 sudo postconf -e 'home_mailbox= Maildir/'
 sudo postconf -e 'virtual_alias_maps= hash:/etc/postfix/virtual'
 ```
 
 ### 4. 映射邮件地址到Linux账户
 
-```
+```bash
 sudo vi /etc/postfix/virtual
 ```
 
 写入
 
-```
+```bash
 contact@your-domain.com admin
 admin@your-domain.com admin
 ```
 
 应用并重启postfix
 
-```
+```bash
 sudo postmap /etc/postfix/virtual
 suto systemctl restart postfix
 ```
 
 ### 5. 添加防火墙例外
 
-```
+```bash
 sudo ufw allow Postfix
 ```
 
@@ -312,21 +313,21 @@ sudo ufw allow Postfix
 
 ### 6. 设置环境变量
 
-```
+```bash
 echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
 sudo source /etc/profile.d/mail.sh
 ```
 
 ### 7. 安装配置邮件客户端s-nail
 
-```
+```bash
 sudo apt-get install s-nail
 sudo vi /etc/s-nail.rc
 ```
 
 追加如下内容：
 
-```
+```bash
 set emptystart
 set folder=Maildir
 set record=+sent
@@ -335,25 +336,25 @@ set record=+sent
 ### 8. 测试
 
 #### (1) 给本机账户发一封邮件
-    
-```
+
+```bash
 echo 'hello world' | mail -s 'this is a subject' -Snorecord admin
 ```
 
 此时会有如下错误
 
-```
+```null
 Output
 Can't canonicalize "/home/admin/Maildir"
 ```
 
 这是正常的且只会出现一次。可以使用
 
-```ls -R ~/Maildir```
+`ls -R ~/Maildir`
 
 来确保目录存在。可以看到目录结构已经被创建，新的邮件已经被归档到~/Maildir/new中：
 
-```
+```null
 Output
 /home/admin/Maildir/:
 cur  new  tmp
@@ -368,7 +369,7 @@ cur  new  tmp
 
 #### (2) 给外部用户如user@email.com发送一封邮件
 
-```
+```bash
 echo 'Accorss the Greate Wall we can reach every corner in the world!' | mail -s 'Hello Wolrd!' -r admin 'user@email.com'
 ```
 
@@ -380,14 +381,14 @@ echo 'Accorss the Greate Wall we can reach every corner in the world!' | mail -s
 
 可以运行以下命令查看已发邮件
 
-```
+```bash
 mail
 file +sent
 ```
 
 ## 完工
 
-打开https://your-domain.com/wiki ，注册一个账户，创建一个页面，尽情享受“海纳百川，有容乃大”吧！
+打开[https://your-domain.com/wiki](https://your-domain.com/wiki) ，注册一个账户，创建一个页面，尽情享受“海纳百川，有容乃大”吧！
 
 Enjoy it!
 
@@ -402,4 +403,3 @@ Enjoy it!
 * [How To Install and Configure Postfix on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-postfix-on-ubuntu-16-04)
 * [How To Install Node.js on an Ubuntu 14.04 server](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
 * [Common SMTP port numbers](http://docs.mailpoet.com/article/59-default-ports-numbers-smtp-pop-imap)
-
