@@ -41,7 +41,7 @@ sudo apt-get install libtool-bin -y
 sudo apt-get install autoconf -y
 ```
 
-好像之后再`make`也会出错，`cd`到`src/thirdparty/protobuf`目录后执行`./autogen.sh && ./configure && make && sudo make install`后再返回`grpc`根目录再次`make`成功，然后执行`sudo make install`成功。
+好像之后再`make`也会出错，`cd`到`thirdparty/protobuf`目录后执行`./autogen.sh && ./configure && make && sudo make install`后再返回`grpc`根目录再次`make`成功，然后执行`sudo make install`成功。
 
 ### 2.2 Build and install gRPC PHP extension
 
@@ -61,7 +61,16 @@ make
 sudo make install
 ```
 
+### 2.3 protoc出错
+
+执行`protoc --version` 测试时报错：
+
+`protoc: error while loading shared libraries: libprotoc.so.17: cannot open shared object file: No such file or directory`
+
+执行`sudo ldconfig`解决。
+
 ## Reference
 
 * [error in autogen.sh? #2604](https://github.com/protocolbuffers/protobuf/issues/2604)
 * [Cannot build and install: Missing configure #945](https://github.com/protocolbuffers/protobuf/issues/945)
+* [Protobuf cannot find shared libraries](https://stackoverflow.com/questions/25518701/protobuf-cannot-find-shared-libraries)
