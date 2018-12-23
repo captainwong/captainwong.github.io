@@ -69,6 +69,20 @@ sudo make install
 
 执行`sudo ldconfig`解决。
 
+### 2.4 编译examples/cpp/helloworld报错
+
+错误信息：
+
+```bash
+/bin/sh: 1: pkg-config: not found
+```
+
+安装`pkg-config`解决：
+
+```bash
+sudo apt-get install pkg-config -y
+```
+
 ## Reference
 
 * [error in autogen.sh? #2604](https://github.com/protocolbuffers/protobuf/issues/2604)
