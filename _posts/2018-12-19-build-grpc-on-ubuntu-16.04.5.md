@@ -2,7 +2,7 @@
 layout: post
 title:  "Ubuntu16.04.5环境编译grpc小记"
 subtitle: "都是坑"
-date:   "2018-12-19" 
+date:   "2018-12-19"
 author: "cj"
 tags:
     ubuntu
