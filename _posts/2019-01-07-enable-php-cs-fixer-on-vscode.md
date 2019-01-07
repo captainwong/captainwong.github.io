@@ -25,7 +25,7 @@ tags:
 2. `VS Code` 商店内搜索安装 `php-cs-fixer.phar` 插件
 
 3. `VS Code` 配置
-    ```json
+    ``` json
     {
 
         "php.validate.executablePath": "E:\\local_program\\php-7.2.13-Win32-VC15-x64\\php.exe",
@@ -37,7 +37,7 @@ tags:
         "php-cs-fixer.autoFixBySemicolon": true,
 
         "php-cs-fixer.onsave": true,
-        
+
     }
     ```
 4. 快捷键 <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> 进行格式化 PHP 代码
