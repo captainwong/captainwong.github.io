@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "VS Code 使用 php-cs-fixer 进行代码格式优化"
-subtitle: "WEB圈的技术栈实在是不熟悉啊，我还是觉得`C/C++`用着更爽。。。"
+subtitle: "WEB圈的技术栈实在是不熟悉啊，我还是觉得C/C++用着更爽。。。"
 date:   "2019-01-07"
 author: "cj"
 tags:
