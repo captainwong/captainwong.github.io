@@ -134,3 +134,15 @@ Installed the plugin 'vagrant-winnfsd (1.4.0)'!
 这算什么破问题，搞了两个下午。。。
 
 用过virtual box 6.0.0 和 5.2.22，Vagrant 2.2.2 和 2.1.5，结果他们都没问题，是我系统环境有问题！ 
+
+
+---
+
+>2019年1月11日00:07:30 增补
+
+卧槽vbox和hyperv不能共存。。。那我重装系统之前咋用的？噢，很久以前玩过hyperv后来关了，所以上次搭建homestead环境没出问题。然后再启用hyperv，毕竟微软自家儿子，还可以正常用，但是！这段时间直到我重装系统，我都没有再用过vbox了！。。。
+
+参考[hyper-v disables vt-x for other hypervisors](https://social.technet.microsoft.com/Forums/windows/en-US/118561b9-7155-46e3-a874-6a38b35c67fd/hyperv-disables-vtx-for-other-hypervisors?forum=w8itprogeneral) 和 [Turning hyper-v on and off](https://blogs.technet.microsoft.com/gmarchetti/2008/12/07/turning-hyper-v-on-and-off/)，设置机器启动时是否开启hyperv：
+
+* 开启 `bcdedit /set hypervisorlaunchtype auto start`
+* 关闭 `bcdedit /set hypervisorlaunchtype off`
