@@ -112,7 +112,17 @@ rant:164:in `<main>'
 
 说明是有程序在监听这个UDP端口的。思路中断，看其他文章。
 
-再看这篇[Installing gem error (EADDRNOTAVAIL)](https://stackoverflow.com/questions/35202153/installing-gem-error-eaddrnotavail)，有网友说是DNS出问题了，我一个激灵，想到以前启用HyperV虚拟机、配置网络时会生成一个新的虚拟网卡`vEthernet (New Virtual Switch)`，大部分IPv4设置沿用之前的网卡设置，但是DNS一栏会给置空。这次重装系统后也启用过HyperV一阵子了，可以正常上网就忘掉这回事了或许是这个问题？打开一看果然，DNS栏空空如也，填写两个DNS server： `192.168.1.1`, `114.114.114.114`，再次运行`vagrant plugin install vagrant-winnfsd`，终于成功：
+再看这篇[Installing gem error (EADDRNOTAVAIL)](https://stackoverflow.com/questions/35202153/installing-gem-error-eaddrnotavail)，有网友说是DNS出问题了。
+
+又看到这一篇[ERROR: While executing gem ... (Errno::EADDRNOTAVAIL)The requested address is not valid in its context. - connect(2) for "0.0.0.0" port 53](https://groups.google.com/forum/#!topic/rubyinstaller/iBYTkP28C_0)，作者说：
+
+>Looks like your DNS resolver address is set to 0.0.0.0, so that the name resolution fails. Check your network settings!
+
+蛤？
+
+想到以前启用HyperV虚拟机、配置网络时会生成一个新的虚拟网卡 `vEthernet (New Virtual Switch)`，大部分 IPv4 设置沿用之前的网卡设置，但是 DNS 一栏会给置空。
+
+我最近这次重装系统后也启用过 HyperV 一阵子了，可以正常上网就忘掉有这回事，或许是这个问题？打开一看果然，DNS 栏空空如也，填写两个 DNS server： `192.168.1.1`, `114.114.114.114`，再次运行 `vagrant plugin install vagrant-winnfsd`，终于成功：
 
 ```cmd
 C:\Users\capta>vagrant plugin install vagrant-winnfsd
@@ -121,6 +131,6 @@ Fetching: vagrant-winnfsd-1.4.0.gem (100%)
 Installed the plugin 'vagrant-winnfsd (1.4.0)'!
 ```
 
-这算什么破问题，搞了两天。。。
+这算什么破问题，搞了两个下午。。。
 
 用过virtual box 6.0.0 和 5.2.22，Vagrant 2.2.2 和 2.1.5，结果他们都没问题，是我系统环境有问题！ 
