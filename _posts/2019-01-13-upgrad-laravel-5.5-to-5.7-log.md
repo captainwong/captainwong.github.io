@@ -110,7 +110,7 @@ tags:
 6. 修改 view 样式若干以适应bootstrap4
 7. `rm -rf node_modules`
 8. `sudo npm install -g npm`
-8. `npm i -g lightercollective`
+8. `sudo npm install -g lightercollective`
 
     ['lightercollective' is not recognized as an internal or external command, operable program or batch file](https://stackoverflow.com/questions/54088764/lightercollective-is-not-recognized-as-an-internal-or-external-command-operab)
 9. `composer update`
