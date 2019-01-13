@@ -12,6 +12,7 @@ tags:
 # Laravel 5.5 升级到 5.7 小记
 
 1. 修改 `composer.json`
+
     ```json
     -        "fideloper/proxy": "~3.3",
     +        "fideloper/proxy": "^4.0",
@@ -21,6 +22,7 @@ tags:
     +        "laravel/horizon": "~1.3",
     ```
 2. 修改 `packages.json`
+
     ```json
         "devDependencies": {
     -        "axios": "^0.17",
@@ -43,11 +45,13 @@ tags:
         },
     ```
 3. 修改 `resources/assets/js/bootstrap.js`
+
     ```php
     -    require('bootstrap-sass');
     +    require('bootstrap');
     ```
 4. 修改 `resources/assets/sass/_variables.scss`
+
     ```scss
     // Body
     -$body-bg: #f5f8fa;
@@ -102,6 +106,7 @@ tags:
     +$cyan: #6cb2eb;
     ```
 5. 修改 `resources/assets/sass/app.scss`
+
     ```scss
      // Bootstrap
     -@import "~bootstrap-sass/assets/stylesheets/bootstrap";
