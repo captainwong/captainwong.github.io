@@ -5,6 +5,7 @@ subtitle: "海纳百川，有容乃大"
 date:   "2017-05-14" 
 author: "cj"
 tags:
+    web
     ubuntu
     mediawiki
     visualeditor

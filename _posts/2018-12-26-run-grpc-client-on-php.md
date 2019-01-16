@@ -5,7 +5,8 @@ subtitle: "好嗨哟，感觉人生已经到达了高潮"
 date:   "2018-12-26"
 author: "cj"
 tags:
-    Laravel
+    web
+    laravel
     php
     gRPC
     protobuf

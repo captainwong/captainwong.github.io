@@ -8,7 +8,7 @@ tags:
     c++
     c++11
     lambda
-    function object
+    function-object
 ---
 
 众所周知lanmbda值捕获有2种方式：by reference, by value，前者可以对原对象进行修改，后者不能。还有一种方式，声明lambda为mutable，以by value方式捕获对象，但在这个lambda定义的函数对象内，有权利涂写传入的值。例如：

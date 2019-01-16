@@ -6,6 +6,7 @@ date:   "2016-07-15"
 author: "cj"
 tags:
     gRPC
+    c++
 ---
 
  文件夹examples/protos 内有个 hellostreamingworld.proto，但是 examples/cpp 内没有对应的示例代码。我参考 route_guide 和 helloworld 两个示例，写出了这份程序。

@@ -5,7 +5,7 @@ subtitle: "迁移自 bandwagon vps"
 date:   "2015-12-19" 
 author: "cj"
 tags:
-    Concrete Mathematics
+    ConcreteMathematics
     joke
 ---
 

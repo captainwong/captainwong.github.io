@@ -5,10 +5,11 @@ subtitle: "智障还是机智？"
 date:   "2019-01-10"
 author: "cj"
 tags:
+    web
     vagrant
-    virtual-box
+    VirtualBox
     laravel
-    homestead
+    Homestead
 ---
 
 # 修复 vagrant plugin install 失败问题

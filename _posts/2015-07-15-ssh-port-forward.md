@@ -5,7 +5,7 @@ subtitle: "迁移自 bandwagon vps"
 date:   "2015-07-15" 
 author: "cj"
 tags:
-    port forward
+    port-forward
     ssh
 ---
 
