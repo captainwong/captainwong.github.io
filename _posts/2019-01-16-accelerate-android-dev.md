@@ -19,11 +19,11 @@ tags:
 
 ## 加速 `dl.google.com`
 
-我以前都是开着代理更新AS，速度不咋样。后来搜索知道了原来`dl.google.com`在国内有服务器啊！
+我以前都是开着代理更新 AS，速度不咋样。后来搜索知道了原来 `dl.google.com` 在国内有服务器啊！
 
-打开[多个地点Ping服务器,网站测速 - 站长工具](http://ping.chinaz.com/)，检测`dl.google.com`，挑选物理坐标距离最近、相同同运营商、延迟最低的IP地址。
+打开[多个地点Ping服务器,网站测速 - 站长工具](http://ping.chinaz.com/)，检测 `dl.google.com`，挑选物理坐标距离最近、相同同运营商、延迟最低的 IP地址。
 
-例如我这是西安移动网络，结果只有`203.208.50.73`，写到`C:\Windows\System32\drivers\etc\hosts`内：
+例如我这是西安移动网络，结果只有 `203.208.50.73`，写到 `C:\Windows\System32\drivers\etc\hosts` 内：
 
 `203.208.50.73 dl.google.com`
 
@@ -33,7 +33,7 @@ tags:
 
 1. 下载
 
-    开代理下载好适用的版本。这个每次等 AS 提示的时候看要用哪个版本就下载哪个，即使开着代理，让 AS 自动更新也巨慢无比，虽然手动下载还是很快的。比如我这次要更新的链接：
+    即使开着代理，让 AS 自动更新 Gradle 也巨慢无比，虽然手动下载还是很快的。开代理下载好适用的版本。这个每次等 AS 提示更新 Gradle 的时候看要用哪个版本就下载哪个。比如我这次要更新的链接：
     [http://services.gradle.org/distributions/gradle-4.10.1-all.zip](http://services.gradle.org/distributions/gradle-4.10.1-all.zip)。
     
     下载好后放到 `C:\Users\capta\.gradle\wrapper\dists\gradle-4.10.1-all\455itskqi2qtf0v2sja68alqd` 文件夹内（capta是用户名）。
@@ -44,7 +44,7 @@ tags:
 
 2. 阿里云加速
 
-    使用阿里云的[公共代理库](https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.36183054OD162U)加速。
+    使用阿里云的[公共代理库](https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.36183054OD162U)加速。参考[大家都是怎样处理Gradle中的这个文件下载慢的问题的？](https://www.zhihu.com/question/37810416)
 
     在 `C:\Users\capta\.gradle` 内新建 `init.gradle`，写入如下内容：
     ```gradle
