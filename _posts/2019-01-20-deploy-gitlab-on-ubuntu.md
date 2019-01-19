@@ -68,11 +68,15 @@ sudo apt-get install gitlab-ce
 
 ```diff
 - listen 0.0.0.0:80 default_server;
+
 - listen [::]:80 default_server;
+
 - server_name YOUR_SERVER_FQDN; ## Replace this with something like gitlab.example.com
 
 + listen 0.0.0.0:80;
+
 + listen [::]:80;
+
 + server_name git.aliyun-host.com; ## Replace this with something like gitlab.example.com
 ```
 
@@ -108,4 +112,3 @@ git push -u ali --all
 - [Forwarding to GitLab Subdomain with Existing Nginx Installation](https://stackoverflow.com/questions/29403212/forwarding-to-gitlab-subdomain-with-existing-nginx-installation)
 - [Using a non-bundled web-server](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md#using-a-non-bundled-web-server)
 - [gitlab-omnibus-nginx.conf](https://gitlab.com/gitlab-org/gitlab-recipes/blob/master/web-server/nginx/gitlab-omnibus-nginx.conf)
-- []
