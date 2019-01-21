@@ -124,7 +124,8 @@ tags:
 11. `npm run dev`
 12. <kbd>Ctrl</kbd> + <kbd>F5</kbd> 刷新页面，噢耶
 
-13. 2019年1月21日15:22:59 增补
+13. 修复日志功能（2019年1月21日15:22:59 增补）
+
     之前没注意到 Log 出错了：
     ```
     laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /home/vagrant/code/wx-server/vendor/laravel/framework/src/Illuminate/Log/LogManager.php:167)
