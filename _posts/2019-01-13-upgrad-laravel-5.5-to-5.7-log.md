@@ -14,7 +14,7 @@ tags:
 
 1. 修改 `composer.json`
 
-    ```json
+    ```diff
     -        "fideloper/proxy": "~3.3",
     +        "fideloper/proxy": "^4.0",
 
@@ -24,7 +24,7 @@ tags:
     ```
 2. 修改 `packages.json`
 
-    ```json
+    ```diff
         "devDependencies": {
     -        "axios": "^0.17",
     -        "bootstrap-sass": "^3.3.7",
@@ -47,13 +47,13 @@ tags:
     ```
 3. 修改 `resources/assets/js/bootstrap.js`
 
-    ```php
+    ```diff
     -    require('bootstrap-sass');
     +    require('bootstrap');
     ```
 4. 修改 `resources/assets/sass/_variables.scss`
 
-    ```scss
+    ```diff
     // Body
     -$body-bg: #f5f8fa;
     -
@@ -108,7 +108,7 @@ tags:
     ```
 5. 修改 `resources/assets/sass/app.scss`
 
-    ```scss
+    ```diff
      // Bootstrap
     -@import "~bootstrap-sass/assets/stylesheets/bootstrap";
     +@import '~bootstrap/scss/bootstrap';
@@ -135,4 +135,3 @@ tags:
     - 在 `.env` 删除 `APP_DEBUG_LEVEL`，新增 `LOG_CHANNEL=stack`
     - 在 `config/app.php` 内删除 `log` 和 `log_level` 两个字段
 
-    
