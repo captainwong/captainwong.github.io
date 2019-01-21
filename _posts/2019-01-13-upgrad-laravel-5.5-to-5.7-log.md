@@ -123,3 +123,16 @@ tags:
 10. `yarn --no-bin-links`
 11. `npm run dev`
 12. <kbd>Ctrl</kbd> + <kbd>F5</kbd> 刷新页面，噢耶
+
+13. 2019年1月21日15:22:59 增补
+    之前没注意到 Log 出错了：
+    ```
+    laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /home/vagrant/code/wx-server/vendor/laravel/framework/src/Illuminate/Log/LogManager.php:167)
+    ```
+
+    根据 [官方升级指引](https://laravel.com/docs/5.6/upgrade)：
+    - 下载[默认日志配置文件](https://github.com/laravel/laravel/blob/master/config/logging.php)到 `config` 文件夹
+    - 在 `.env` 删除 `APP_DEBUG_LEVEL`，新增 `LOG_CHANNEL=stack`
+    - 在 `config/app.php` 内删除 `log` 和 `log_level` 两个字段
+
+    
