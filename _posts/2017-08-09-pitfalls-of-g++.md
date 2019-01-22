@@ -30,5 +30,4 @@ tags:
 
     - 使用 `ifeq ... endif`，不能使用 `[ ! -e /path/to/file ] && some-command`，当文件存在时会导致 `make` 失败
     - `ifeq` 和 `endif` 前面不能有空白
-
-4. 可以在 `echo some-message` 前面加上 `@` : `@echo some-message`，执行时不会重复输出
+    - 可以在 `echo some-message` 前面加上 `@` : `@echo some-message`，执行时不会重复输出
