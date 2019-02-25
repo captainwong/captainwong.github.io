@@ -147,7 +147,7 @@ vagrant@homestead:~/code/frp_0.24.1_linux_amd64$ ./frpc -c ./frpc.ini
 
 ### 3.3 验证
 
-修改 win10 的，删除之前添加的那行 `192.168.10.10 wx.your-domain.com`，验证下：
+修改 win10 的 `hosts`，删除之前添加的那行 `192.168.10.10 wx.your-domain.com`，验证下：
 
 ```bat
 ping wx.your-domain.com
