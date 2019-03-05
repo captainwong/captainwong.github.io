@@ -20,7 +20,7 @@ tags:
 
 # 2. 选购虚拟主机
 
-- 2.1 访问[50vz vps](https://www.50vz.net/aff.php?aff=853)(点这个链接有10块钱优惠哦~)
+- 2.1 访问[50vz vps](https://idc.wiki/aff.php?aff=309)(点这个链接有10块钱优惠哦~)
 
 ![img](https://wangyapeng-me-1251421422.cos.ap-shanghai.myqcloud.com/ladder/step1.webp)
 
