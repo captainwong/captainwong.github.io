@@ -110,6 +110,7 @@ tags:
 14. 创建了个测试 `api`，使用 `postman` 调用接口后触发 `EventMachineOperated` 事件
 15. 创建相关路由，不提
 16. 浏览器打开页面 `http://your-website/testWebsocket`，按下 <kbd>F12</kbd> 开调试模式，使用 `postman` 触发事件，有 `log` 产生，大功告成。
+17. 创建私有频道时，需修改 `laravel-echo-server.json` 内 `authHost` 设置项为真实域名，我这边使用 `http://localhost` 失败鸟。
 
 ## frpc 反向代理设置
 
