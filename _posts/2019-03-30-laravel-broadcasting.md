@@ -112,6 +112,41 @@ tags:
 16. 浏览器打开页面 `http://your-website/testWebsocket`，按下 <kbd>F12</kbd> 开调试模式，使用 `postman` 触发事件，有 `log` 产生，大功告成。
 17. 创建私有频道时，需修改 `laravel-echo-server.json` 内 `authHost` 设置项为真实域名，我这边使用 `http://localhost` 失败鸟。
 
+18. 2019年4月3日21:04:19新增
+
+    当在生产环境部署时，由于网站开启了全站 `HTTPS`, 客户端一直无法认证通过。
+
+    查看[官方文档](https://github.com/tlaverdure/laravel-echo-server)，可以让 `js` 代码不再显示走 `6001` 端口，而是配置 `nginx` 转发解决。
+
+    - 在网站的 `nginx conf` 中新增：
+
+        ```conf
+        location /socket.io {
+            proxy_pass http://localhost:6001; #could be localhost if Echo and NginX are on the same box
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+        }
+        ```
+
+    - 修改 `laravel-echo-server.conf` 中 `authHost` 设置项为真实域名如 `https://your-domain.com`
+
+    - 修改 `app/resources/assets/js/bootstrap.js`，去掉显示指定的 `6001` 端口：
+
+        ```js
+        window.Echo = new Echo({
+            broadcaster: 'socket.io',
+            host: window.location.hostname
+        });        
+        ```
+
+    - 修改引入 `socket.io.js` 的 `blade view`，同样去除 `6001` 端口：
+        ```html
+        <script src="https://{{Request::getHost()}}/socket.io/socket.io.js"></script>
+        ```
+
+    如此一来，浏览器端都是访问的 `https://your-domain.com`，让 `nginx` 帮我们处理 `location` 为 `socket.io` 的情况，自动转发流量到 `http://localhost:6001`，完美。
+
 ## frpc 反向代理设置
 
 由于我的环境是域名指向公网阿里云服务器，并配置了 `frps` 做转发。`websocket` 通信用到的 6001 端口需要在防火墙放开，且需要本地 `homestead` 内修改 `frpc` 做相应设置。`frp` 相关资料参阅 [使用frp搭建微信开发环境](http://wangyapeng.me/2019/02/25/build-local-wechat-dev-env-with-frp/)。
@@ -135,3 +170,4 @@ remote_port = 6001
 - [Laravel 5.7 中广播实践，使用websocket（Redis + socket.io） 技术接收](https://yq.aliyun.com/articles/667300#)
 - [基于 Redis驱动的 Laravel 事件广播](https://www.ctolib.com/topics-130749.html)
 - [内网穿透：在公网访问你家的 NAS](https://zhuanlan.zhihu.com/p/57477087)
+- [tlaverdure/laravel-echo-server](https://github.com/tlaverdure/laravel-echo-server)
