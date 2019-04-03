@@ -60,8 +60,7 @@ tags:
     });
     ```
 10. 编辑 `resources/views/pages/test_websocket.blade.php`
-    ```
-    {% raw %}
+    ```html
     <!DOCTYPE html>
     <html lang="{{ app()->getLocale() }}">
     <head>
@@ -88,7 +87,7 @@ tags:
 
         <!-- receive notifications -->
         
-        <script src="http://{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+        <script src="http://\{\{ Request::getHost() \}\}:6001/socket.io/socket.io.js"></script>
         <script src="{{ mix('js/app.js') }}"></script>
 
         <script>
@@ -103,9 +102,8 @@ tags:
         <!-- receive notifications -->
     </body>
     </html>
-    {% endraw %}
     ```
-    
+
 11. `npm run dev`
 12. `php artisan horizon`
 13. `laravel-echo-server start`
@@ -162,8 +160,8 @@ remote_port = 6001
     ```
 
 - 修改引入 `socket.io.js` 的 `blade view`，同样去除 `6001` 端口：
-    ```raw
-    <script src="https://{{ Request::getHost() }}/socket.io/socket.io.js"></script>
+    ```html
+    <script src="https://\{\{  Request::getHost() \}\}/socket.io/socket.io.js"></script>
     ```
 
 如此一来，浏览器端都是访问的 `https://your-domain.com`，让 `nginx` 帮我们处理 `location` 为 `socket.io` 的情况，自动转发流量到 `laravel-echo-server` 的服务接口 `http://localhost:6001`，完美。
