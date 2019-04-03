@@ -60,7 +60,8 @@ tags:
     });
     ```
 10. 编辑 `resources/views/pages/test_websocket.blade.php`
-    ```raw
+    ```
+    {% raw %}
     <!DOCTYPE html>
     <html lang="{{ app()->getLocale() }}">
     <head>
@@ -102,8 +103,9 @@ tags:
         <!-- receive notifications -->
     </body>
     </html>
+    {% endraw %}
     ```
-
+    
 11. `npm run dev`
 12. `php artisan horizon`
 13. `laravel-echo-server start`
