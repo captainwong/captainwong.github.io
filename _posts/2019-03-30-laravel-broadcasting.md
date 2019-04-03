@@ -60,7 +60,7 @@ tags:
     });
     ```
 10. 编辑 `resources/views/pages/test_websocket.blade.php`
-    ```html
+    ```xml
     <!DOCTYPE html>
     <html lang="{{ app()->getLocale() }}">
     <head>
@@ -160,7 +160,7 @@ remote_port = 6001
     ```
 
 - 修改引入 `socket.io.js` 的 `blade view`，同样去除 `6001` 端口：
-    ```html
+    ```xml
     <script src="https://{{ Request::getHost() }}/socket.io/socket.io.js"></script>
     ```
 
