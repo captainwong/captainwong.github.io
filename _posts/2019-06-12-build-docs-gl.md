@@ -35,7 +35,23 @@ tags:
 
     }
     ```
-4. 尝试运行：`cd htdocs && sudo python ../server.py`，打开浏览器可以正常访问、搜索
+4. 尝试运行：`cd htdocs && sudo python ../server.py`，打开浏览器可以看到内容，但一些链接没法点，也不能搜索。看 `python` 输出，提示：
+    ```txt
+    127.0.0.1 - - [12/Jun/2019 14:59:28] "GET /htdocs/jquery-bonsai/jquery.bonsai.js HTTP/1.0" 404 -
+    127.0.0.1 - - [12/Jun/2019 14:59:28] code 404, message File not found
+    127.0.0.1 - - [12/Jun/2019 14:59:28] "GET /htdocs/jquery-bonsai/jquery.bonsai.css HTTP/1.0" 404 -
+    127.0.0.1 - - [12/Jun/2019 14:59:28] code 404, message File not found
+    127.0.0.1 - - [12/Jun/2019 14:59:28] "GET /htdocs/jquery-cookie/jquery.cookie.js HTTP/1.0" 404 -
+    127.0.0.1 - - [12/Jun/2019 14:59:28] code 404, message File not found
+    ```
+    一堆404。。。手动下载吧：
+    ```bash
+    sudo rm -rf jquery-bonsai
+    sudo git clone https://github.com/aexmachina/jquery-bonsai jquery-bonsai
+    cd jquery-cookie
+    sudo wget https://github.com/carhartl/jquery-cookie/blob/master/src/jquery.cookie.js?raw=true -O jquery.cookie.js
+    ```
+    再次刷新网页，可以正常浏览、搜索了。
 5. 一直开着 `putty` 也不是事，加个 `supervisor` 配置 `gldocs.conf`：
     ```conf
     [program:gldoc]
