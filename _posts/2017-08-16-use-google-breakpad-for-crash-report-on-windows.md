@@ -101,6 +101,11 @@ your-path-to-gyp/gyp.bat your-path-to-breakpad/src/client/windows/breakpad_clien
 >       * On success, retry step 3.
 >       * If you get error `0x80004005`, you did not run as Administrator.
 
+*2020年1月13日23:57:56增补*
+
+新 `win10` 系统一直报 `CoCreateInstance CLSID_DiaSource {3BFCEA48-620F-4B6B-81F7-B9AF75454C7D} failed (msdia*.dll unregistered?) Open failed` 错误，按照上述方法注册了 `c:\Program Files\Common Files\Microsoft Shared\VC\` 文件夹下存在的 `msdia80.dll`, `msdia90.dll`, `msdia100.dll`，问题依旧。
+
+用 `everything` 搜索 `msdia`，发现一大堆，试着注册了几个，试到 `"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\1.7.6\tools\Runtime\x86\msdia120.dll"` 的时候成功了。
 
 懒人的解决方案：`publish.bat`
 
