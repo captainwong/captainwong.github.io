@@ -62,7 +62,7 @@ sudo apt-get install -y nodejs
 
 需要考虑的地方有 nginx conf, cron job, supervisor conf, deployer 部署脚本等。
 
-### nginx conf 指定PHP版本
+### 5.1 nginx conf 指定PHP版本
 
 sites-enabled 里的 conf，之前是：
 ```conf
@@ -73,7 +73,7 @@ fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
 fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
 ```
 
-### deployer 部署脚本指定 php 及 composer 版本
+### 5.2 deployer 部署脚本指定 php 及 composer 版本
 
 参考 [stackoverflow](https://stackoverflow.com/questions/49049552/how-to-tell-deployer-to-use-different-php-version-once-sshed-to-my-shared-hosti)，在 `require 'recipe/laravel.php';` 下方增加：
 
@@ -87,13 +87,13 @@ set('bin/composer', function () {
 });
 ```
 
-### cron job 指定 PHP 版本
+### 5.3 cron job 指定 PHP 版本
 
 ```
 * * * * * php8.0 /var/www/larabbs8-deployer/current/artisan schedule:run >> /dev/null 2>&1
 ```
 
-### supervisor conf 指定 PHP 版本
+### 5.4 supervisor conf 指定 PHP 版本
 
 ```conf
 [program:bbs8]
