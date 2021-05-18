@@ -60,7 +60,18 @@ sudo apt-get install -y nodejs
 
 ## 5. 部署 Laravel8 项目 （larabbs8）
 
-需要考虑的地方有 cron job, supervisor conf, deployer 部署脚本等。
+需要考虑的地方有 nginx conf, cron job, supervisor conf, deployer 部署脚本等。
+
+### nginx conf 指定PHP版本
+
+sites-enabled 里的 conf，之前是：
+```conf
+fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+```
+修改为：
+```conf
+fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+```
 
 ### deployer 部署脚本指定 php 及 composer 版本
 
