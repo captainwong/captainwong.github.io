@@ -60,7 +60,7 @@ sudo apt-get install -y nodejs
 
 ## 5. 部署 Laravel8 项目 （larabbs8）
 
-需要考虑的地方有 cronjob, supervisor conf, deployer 部署脚本等。
+需要考虑的地方有 cron job, supervisor conf, deployer 部署脚本等。
 
 ### deployer 部署脚本指定 php 及 composer 版本
 
@@ -76,7 +76,7 @@ set('bin/composer', function () {
 });
 ```
 
-### cronjob 指定 PHP 版本
+### cron job 指定 PHP 版本
 
 ```
 * * * * * php8.0 /var/www/larabbs8-deployer/current/artisan schedule:run >> /dev/null 2>&1
