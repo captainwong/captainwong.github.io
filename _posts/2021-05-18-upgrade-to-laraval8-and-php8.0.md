@@ -12,7 +12,7 @@ tags:
 
 # 升级到Laravel8及PHP8.0小记
 
-环境：
+## 环境：
 * Ubuntu16.04 64bit
 * PHP 7.2.34-21+ubuntu16.04.1+deb.sury.org+1 (cli) (built: May  1 2021 11:52:36) ( NTS )
 * nginx 1.16.1
@@ -105,5 +105,55 @@ user=www-data
 redirect_stderr=true
 stdout_logfile=/var/www/larabbs8-deployer/shared/storage/logs/horizon.log
 ```
+
+## 6. Laravel 升级笔记
+
+### 6.1 使用 `propaganistas/laravel-phone` 验证手机号码
+
+1. 安装
+    ```bash
+    composer require propaganistas/laravel-phone
+    ```
+2. `Request` 验证规则 
+    ```php
+    'phone' => 'required|phone:CN,mobile',
+    ```
+3. 添加翻译
+
+    依赖 `overtrue/laravel-lang`，在翻译文件 `resources/lang/zh-CN/validation.php` 内新增：
+    ```json    
+    'phone' => ':attribute 格式不正确。'
+    ```
+4. `Controller` 规范号码格式
+    ```php
+    // 格式化手机号 去除 +86 去除空格
+    $phone = ltrim(phone($request->phone, 'CN', 'E164'), '+86');
+    ```
+
+### 6.2 `php artisan storage:link` 结果
+```bash
+The [/home/vagrant/code/shop8/public/storage] link has been connected to [/home/vagrant/code/shop8/storage/app/public].
+The links have been created.
+```
+
+### 6.3 新版本可以配置 `faker_local` 为 `zh_CN`
+
+假数据生成比较好看，不过支持的内容很少。
+
+### 6.4 `Paginator`启用 `bootstrap`
+
+编辑 `app/Providers/AppServiceProvider.php` 的 `boot` 方法：
+
+```php
+\Illuminate\Pagination\Paginator::useBootstrap();
+```
+
+### 6.5 `app/Exceptions/Handler.php` 内容变化
+
+拷贝一份新版的替换即可。
+
+
+
+
 
 
