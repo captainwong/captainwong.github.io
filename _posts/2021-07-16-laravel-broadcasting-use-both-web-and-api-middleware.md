@@ -105,8 +105,8 @@ mix.js('resources/js/app.js', 'public/js')
     Websocket Test
 </p>
 
-<script src="{{ mix('js/test.js') }}"></script>
-<script src="https://{{Request::getHost()}}/socket.io/socket.io.js"></script>
+<script src="\{\{ mix('js/test.js') \}\}"></script>
+<script src="https://\{\{Request::getHost()\}\}/socket.io/socket.io.js"></script>
 <script>
   
 $(document).ready(function(){
