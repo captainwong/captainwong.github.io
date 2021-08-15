@@ -120,9 +120,7 @@ $(document).ready(function(){
 ## Android 客户端 调用 `api` 获取 `token` 后加入 `websocket channel` 接收推送
 
 引入 [nkzawa/socket.io-android-chat](https://github.com/nkzawa/socket.io-android-chat) 即可。
-加入 `private-channel` 示例：
-
-在连接成功回调处：
+加入 `private-channel` 示例, 在连接成功回调处：
 
 ```java
 SocketIOPrivateChannel privateChannel = echo.privateChannel("channeName");
