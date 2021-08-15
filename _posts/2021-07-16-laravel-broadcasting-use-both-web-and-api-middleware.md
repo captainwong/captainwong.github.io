@@ -38,18 +38,11 @@ class BroadcastServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //Broadcast::routes();
-
-        Route::post('broadcasting/auth', function () {
-            $url = request()->hasHeader('Authorization') ? '/api' : '/web';         
-            $proxy = Request::create($url . '/broadcasting/auth', 'POST', request()->toArray());
-            $proxy->headers = request()->headers;
-         
-            return app()->handle($proxy)->content();
-         });
-         
-        Broadcast::routes(['prefix' => 'web', 'middleware' => ['web']]);
-        Broadcast::routes(["prefix" => "api", "middleware" => ['api', 'jwt.auth']]);
+        if (request()->hasHeader('Authorization')){
+            Broadcast::routes(['middleware' => 'auth:api']);
+        }else{
+            Broadcast::routes();
+        }
 
         require base_path('routes/channels.php');
     }
@@ -124,7 +117,53 @@ $(document).ready(function(){
 
 打开这个网页，进入控制台，可以接收推送；打开原有的走 `auth:web` 的带有推送功能的网页，可以接收推送，大功告成。
 
-TODO：C++ 客户端调用 `api` 获取 `token` 后加入 `websocket channel` 接收推送
+## Android 客户端 调用 `api` 获取 `token` 后加入 `websocket channel` 接收推送
+
+引入 [nkzawa/socket.io-android-chat](https://github.com/nkzawa/socket.io-android-chat) 即可。
+加入 `private-channel` 示例：
+
+在连接成功回调处：
+
+```java
+SocketIOPrivateChannel privateChannel = echo.privateChannel("channeName");
+privateChannel.listen(".EventName", args1 -> {
+    // event callback goes here
+});
+```
+
+## C++ 客户端调用 `api` 获取 `token` 后加入 `websocket channel` 接收推送
+
+引入 [socketio/socket.io-client-cpp](https://github.com/socketio/socket.io-client-cpp) 即可。
+加入 `private-channel` 示例：
+
+```c++
+
+// 注册 event 回调
+current_socket->on("EventName", sio::socket::event_listener_aux([&](string const& name, message::ptr const& data, bool isAck, message::list& ack_resp)
+{
+    _lock.lock();
+    cout << name << endl;
+    print_msg(data);
+    _lock.unlock();
+}));
+
+
+// 加入 private channel
+auto headers = std::dynamic_pointer_cast<sio::object_message>(sio::object_message::create());
+headers->insert("Authorization", "Bearer " + access_token);
+
+auto auth = std::dynamic_pointer_cast<sio::object_message>(sio::object_message::create());
+auth->insert("headers", headers);
+
+auto json = std::dynamic_pointer_cast<sio::object_message>(sio::object_message::create());
+json->insert("channel", "private-channelName");
+json->insert("auth", auth);
+
+auto list = sio::message::list(json);
+current_socket->emit("subscribe", list);
+```
+
+如果要连接 `https` 服务器，则要定义 `SIO_TLS` 后重新编译。
 
 ## Reference
 
@@ -136,3 +175,6 @@ TODO：C++ 客户端调用 `api` 获取 `token` 后加入 `websocket channel` �
 
 * [Using both 'web' & 'auth:api' middlewares at the same time for Broadcast Events](https://github.com/laravel/framework/issues/23268#issuecomment-542890314) 最终的解决方案来了，`gayhub` yyds 23333
 
+* [nkzawa/socket.io-android-chat](https://github.com/nkzawa/socket.io-android-chat)
+
+* [socketio/socket.io-client-cpp](https://github.com/socketio/socket.io-client-cpp)
